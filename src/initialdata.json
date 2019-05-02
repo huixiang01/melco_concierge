@@ -1,0 +1,122 @@
+{
+  "orders": {
+    "1": {
+      "type" : 1,
+      "items" : {
+        "Pork Shank Soup" : {"amount" : 1, "price" : 1056},
+        "Coke" : {"amount" : 3, "price" : 1032},
+        "Water" : {"amount" : 2, "price" : 405}
+      },
+      "orderid" : 1,
+      "comments":"I want to have more napkins",
+      "room": "10-01",
+      "name": "John Doe",
+      "expected_delivery_time": "1500hrs @ 1 May",
+      "details": "details",
+      "timestamp":"",
+      "status": false 
+    },
+    "2": {
+      "type" : 1,
+      "items" : {
+        "Pork Shank Soup" : {"amount" : 2, "price" : 1056},
+        "Coke" : {"amount" : 1, "price" : 1032},
+        "Water" : {"amount" : 2, "price" : 405}
+      },
+      "orderid" : 2,
+      "comments":"I want to have more towels",
+      "room": "10-02",
+      "name": "John Doe",
+      "expected_delivery_time": "1800hrs @ 1 May",
+      "details": "details",
+      "timestamp":"",
+      "status": false 
+    },
+    "3": {
+      "type" : 1,
+      "items" : {
+        "Pork Shank Soup" : {"amount" : 1, "price" : 1056},
+        "Coke" : {"amount" : 2, "price" : 1032},
+        "Water" : {"amount" : 2, "price" : 405}
+      },
+      "orderid" : 3,
+      "comments":"I want to have more napkins. Thank you",
+      "room": "10-03",
+      "name": "John Doe",
+      "expected_delivery_time": "1000hrs @ 2 May",
+      "details": "details",
+      "timestamp":"",
+      "status": false 
+    },
+    "4": {
+      "type" : 2 ,
+      "items" : {"Bathing Towel" : {"amount" : 2}, "Towel Set" : {"amount" : 2}, "Water" : {"amount" : 1}},
+      "orderid" : 4,
+      "comments":"I want to have more napkins. Thank you",
+      "room": "10-04",
+      "name": "John Doe",
+      "expected_delivery_time": "0900hrs @ 3 May",
+      "details": "details",
+      "timestamp":"",
+      "status": false 
+    },
+    "5": {
+      "type" : 2 ,
+      "items" : {"Bathing Towel" : {"amount" : 1}, "Towel Set" : {"amount" : 1}, "Face Towel" : {"amount" : 1}},
+      "orderid" : 5,
+      "comments":"I want to have more napkins. Thank you",
+      "room": "10-05",
+      "name": "John Doe",
+      "expected_delivery_time": "1000hrs @ 3 May",
+      "details": "details",
+      "timestamp":"",
+      "status": false 
+    },
+    "6": {
+      "type" : 2 ,
+      "items" : {"Bathing Towel" : {"amount" : 1}, "Hand Towel" : {"amount" : 2}, "Water" : {"amount" : 2}},
+      "orderid" : 6,
+      "comments":"I want to have more napkins. Thank you",
+      "room": "10-06",
+      "name": "John Doe",
+      "expected_delivery_time": "1100hrs @ 3 May",
+      "details": "details",
+      "timestamp":"",
+      "status": false 
+    },
+    "7": {
+      "type" : 2,
+      "items" : {"Hand Towel" : {"amount" : 3}, "Face Towel" : {"amount" : 1}},
+      "orderid" : 7,
+      "comments":"I want to have more napkins. Thank you",
+      "room": "10-07",
+      "name": "John Doe",
+      "expected_delivery_time": "1200hrs @ 3 May",
+      "details": "details",
+      "timestamp":"",
+      "status": false 
+    }
+  },
+  "columns": {
+    "column-1": {
+      "id": "column-1",
+      "title": "Pending",
+      "orderIds": ["1","2","3","4","5","6","7"],
+      "fields" :["Items", "OrderID","Room", "Name", "Expected Delivery Time", "Details"]
+    },
+    "column-2": {
+      "id": "column-2",
+      "title": "Processing",
+      "orderIds": [],
+      "fields" :["Room", "Time Processsed","Details"]
+    },
+    "column-3": {
+      "id": "column-3",
+      "title": "Delivering",
+      "orderIds": [],
+      "fields" :["Room", "Time Sent","Details", "Status"]
+    }
+  },
+  
+  "columnOrder": ["column-1", "column-2", "column-3"]
+}

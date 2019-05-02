@@ -1,0 +1,151 @@
+.mainaccordiontable {
+  width : 100%
+}
+
+.individulalaccordiontable {
+  width:40%;
+  float:left
+}
+
+.grid { 
+  padding-left: 20px;
+  padding-right: 20px
+}
+
+.column {  
+  border-left : 0px;
+  border-right: 0px;
+  background-color: white;
+  flex-grow: 1;
+  min-height:59px;
+}
+
+.heading {
+  font-size : 1em;
+  height : 42px;
+  padding : 0.5px;
+  font-weight: 400;
+  color: #757575;
+}
+
+
+
+.order {
+  font-size: 0.8em;
+  padding: 8px;
+  transition: background-color 0.2s ease;
+  background-color: white;
+}
+
+
+.order {
+  border-bottom: 1px solid grey;
+}
+.order:first-child {
+  border-top: 1px solid grey;
+}
+.order:nth-child(odd) {
+  background-color: #eee;
+}
+
+.order.active {
+  background-color: #2954a4
+}
+
+.order.inactive {
+  background-color: #2954a4
+}
+
+.carddroppable {
+  overflow:visible;
+}
+
+.cardtitle {
+  background-color: #2954a4;
+  padding-bottom: 8px;
+  padding-top: 8px;
+  color: white;
+  text-transform: uppercase;
+  font-weight: 550;
+  font-size : 1.4em;
+  font-family:sans-serif
+}
+
+.columntable_heading {
+  padding:8px;
+  width: 100%
+}
+
+.mainCard {
+  margin-left: 20px;
+  margin-right: 22px;
+  margin-top: 20px;
+  margin-bottom: 8px;
+}
+
+.maintabs {
+  display: flex;
+  padding: 8px
+}
+
+.details {
+  font-size : 0.8em;
+  // font-weight : bold;
+  line-height: 0px;
+  text-transform: uppercase;
+  padding: 0px;
+  margin: 0px;
+  vertical-align: top;
+}
+
+.detailsmenu {
+  height: 40px;
+  width : 40px
+}
+
+.details_box {
+  width : 250px;
+  height : 480px;
+  padding : 0px;
+  margin: 0px;
+}
+
+.details_title {
+  width : 100%;
+  background : grey;
+  color : white;
+}
+
+.details_content {
+  padding : 10px;
+  font-size : 0.8em;
+  
+}
+
+.field {
+  height: 42px;
+  
+  td {
+      color: #212121;
+      font-family: 'Verdana';
+      font-weight : 500;
+  }
+}
+
+.bold {
+  font-weight: bold;
+  font-size: 1.2em
+}
+
+.nobold {
+  font-weight: 10; 
+  font-family: serif;
+}
+
+.green {
+  color:green
+}
+
+.yellow {
+  color:rgb(154,205,50)
+}
