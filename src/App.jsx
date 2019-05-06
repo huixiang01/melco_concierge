@@ -22,7 +22,6 @@ class App extends React.Component {
     }
     document.querySelectorAll('body')[0].style = 'background-color: rgb(244, 247, 250);'
   }
-  
 
   handleFixedTabChange = (event, value) => {
     this.setState({tab_index: value});
@@ -30,8 +29,7 @@ class App extends React.Component {
 
 
   handleStatus = orderid => () => {
-    console.log(orderid)
-    console.log('state', this.state)
+    
     this.setState({
         accordion :{
           ...this.state.accordion,
@@ -72,7 +70,6 @@ class App extends React.Component {
 
         }
       }
-
       this.setState(newState)
       return
     }
@@ -89,7 +86,8 @@ class App extends React.Component {
 
     const finishOrderIds = Array.from(finish.orderIds)
     finishOrderIds.push(draggableId)
-    finishOrderIds.sort()
+    
+    finishOrderIds.sort(function(a, b){return a-b})
     const newFinish = {
       ...finish,
       orderIds: finishOrderIds
@@ -124,7 +122,6 @@ class App extends React.Component {
   }
 
   render() {
-    console.log(this.state)
     
     return (
 
@@ -132,9 +129,12 @@ class App extends React.Component {
           <Card className ={style.mainCard}>
           <Tabs value={this.state.tab_index} onChange={this.handleFixedTabChange} >
             <Tab label='All'></Tab>
-            <Tab label='Service Request'></Tab>
             <Tab label='In-Room Dining'></Tab>
+            <Tab label='Sevice Request'></Tab>
           </Tabs>
+        </Card>
+        <Card>
+
         </Card>
         <br/>
           <Grid container spacing={24} className={style.grid}>

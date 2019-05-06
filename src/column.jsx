@@ -32,7 +32,7 @@ export default class Column extends React.Component {
         <table className={style.columntable_heading}>
           <thead>
             <tr>
-            <th width="25%" align="center" className={style.heading}>
+            <th width="40%" align="center" className={style.heading}>
             Items
               </th>
             <th width="10%" align="center" className={style.heading}>
@@ -99,7 +99,8 @@ export default class Column extends React.Component {
         <Card className={style.carddroppable}>      
           <CardContent className={style.cardtitle}>{this.props.column.title}</CardContent>
           {this.handleHeading()}
-            <Droppable droppableId={this.props.column.id} type="order" key={this.props.column.id}>
+            <Droppable droppableId={this.props.column.id} type="order" 
+            key={this.props.column.id} >
               {(provided, snapshot) => (
                 <div className={style.column}
                   ref={provided.innerRef}

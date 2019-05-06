@@ -6,20 +6,21 @@ import OrderDetailsDining from './order_details_dining';
 import Switch from '@material-ui/core/Switch';
 
 export default class Order extends React.Component {
-
-
+  index = 0
 
   handleTableOrder = () => {
     if (this.props.column_id === "column-1") {
+      var Objectlength = Object.entries(this.props.order.items).length - 1
       return(
         <table width="100%" className={style.field}>
           <tbody>
             <tr>
-            <td width="25%" align="left">
-              {Object.entries(this.props.order.items).map(([item, itemdetails]) => {               
+            <td width="40%" align="left">
+              {Object.entries(this.props.order.items).map(([item, itemdetails]) => {
+                Objectlength -= 1
                 return (
-                <div key={this.props.order.orderid + item}>{item} X {itemdetails.amount}</div>
-              )})}
+                  <span key={item + itemdetails.amount}>{item} X {itemdetails.amount}{Objectlength === -1 ? undefined : ","} </span>
+                )})}
               </td>
             <td width="10%" align="center">
             {this.props.order.orderid}

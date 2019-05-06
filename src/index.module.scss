@@ -18,6 +18,8 @@
   background-color: white;
   flex-grow: 1;
   min-height:59px;
+  overflow-y: scroll;
+  max-height:600px
 }
 
 .heading {
