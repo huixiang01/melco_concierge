@@ -1,6 +1,6 @@
 {
-  "orders": {
-    "1": {
+  "orders": [
+    {
       "type" : 1,
       "items" : [
         {"name" : "Pork Shank Soup", "amount" : 1, "price" : 1056},
@@ -16,7 +16,7 @@
       "status": false,
       "ordertime": 1556668800000
     },
-    "2": {
+    {
       "type" : 1,
       "items" : [
         {"name" : "Pork Shank Soup" , "amount" : 2, "price" : 1056},
@@ -32,7 +32,7 @@
       "status": false,
       "ordertime": 1556668800000
     },
-    "3": {
+    {
       "type" : 1,
       "items" : [
         {"name" : "Pork Shank Soup" , "amount" : 1, "price" : 1056},
@@ -48,7 +48,7 @@
       "status": false,
       "ordertime": 1556668800000 
     },
-    "4": {
+    {
       "type" : 2  ,
       "items" :[ 
 
@@ -65,7 +65,7 @@
       "status": false,
       "ordertime": 1556668800000
     },
-    "5": {
+    {
       "type" : 2 ,
       "items" :[
         {"name" : "Bathing Towel" , "amount" : 1}, 
@@ -81,7 +81,7 @@
       "status": false,
       "ordertime": 1556668800000 
     },
-    "6": {
+    {
       "type" : 2  ,
       "items" :[
         {"name" : "Bathing Towel" , "amount" : 1}, 
@@ -97,7 +97,7 @@
       "status": false,
       "ordertime": 1556668800000 
     },
-    "7": {
+    {
       "type" : 2,
       "items" :[
         {"name" : "Bathing Towel" , "amount" : 1}, 
@@ -113,7 +113,7 @@
       "status": false,
       "ordertime": 1556668800000 
     },
-    "8": {
+    {
       "type" : 2,
       "items" :[
         {"name" : "Bathing Towel" , "amount" : 1}, 
@@ -129,7 +129,7 @@
       "status": false,
       "ordertime": 1556668800000 
     },
-    "9": {
+    {
       "type" : 2 ,
       "items" :[
         {"name" : "Bathing Towel" , "amount" : 1}, 
@@ -145,7 +145,7 @@
       "status": false,
       "ordertime": 1556668800000 
     },
-    "10": {
+    {
       "type" : 1,
       "items" : [
         {"name" : "Pork Shank Soup" , "amount" : 2, "price" : 1056},
@@ -161,7 +161,7 @@
       "status": false,
       "ordertime": 1556668800000
     },
-    "11": {
+    {
       "type" : 1 ,
       "items" :[
         {"name" : "Pork Shank Soup" , "amount" : 2, "price" : 1056},
@@ -177,7 +177,7 @@
       "status": false,
       "ordertime": 1556668800000 
     },
-    "12": {
+    {
       "type" : 2 ,
       "items" :[
         {"name" : "Bathing Towel" , "amount" : 2}, 
@@ -193,7 +193,7 @@
       "status": false,
       "ordertime": 1556668800000 
     },
-    "13": {
+    {
       "type" : 2 ,
       "items" :[
         {"name" : "Bathing Towel" , "amount" : 2}, 
@@ -209,7 +209,7 @@
       "status": false,
       "ordertime": 1556668800000 
     },
-    "14": {
+    {
       "type" : 2 ,
       "items" :[
         {"name" : "Bathing Towel" , "amount" : 2}, 
@@ -225,7 +225,7 @@
       "status": false,
       "ordertime": 1556668800000 
     },
-    "15": {
+    {
       "type" : 2 ,
       "items" :[
         {"name" : "Bathing Towel" , "amount" : 2}, 
@@ -241,27 +241,6 @@
       "status": false,
       "ordertime": 1556668800000 
     }
-  },
-  "columns": {
-    "column-1": {
-      "id": "column-1",
-      "title": "Pending",
-      "orderIds": ["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15"],
-      "fields" :["Items", "OrderID","Room", "Name", "Expected Delivery Time", "Details"]
-    },
-    "column-2": {
-      "id": "column-2",
-      "title": "Processing",
-      "orderIds": [],
-      "fields" :["Room", "Time Processsed","Details"]
-    },
-    "column-3": {
-      "id": "column-3",
-      "title": "Delivering",
-      "orderIds": [],
-      "fields" :["Room", "Time Sent","Details", "Status"]
-    }
-  },
-  
-  "columnOrder": ["column-1", "column-2", "column-3"]
+  ]
+
 }

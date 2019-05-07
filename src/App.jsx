@@ -2,7 +2,7 @@ import React from 'react';
 import { DragDropContext } from 'react-beautiful-dnd';
 
 import initialData from './initialdata.json';
-import Column from './column';
+import Column from './ColumnComponent';
 import style from './index.module.scss';
 import  { startOfQuarter , endOfDay } from 'date-fns'
 import Grid from '@material-ui/core/Grid';
@@ -12,6 +12,7 @@ import Card from '@material-ui/core/Card';
 import DatePicker from 'react-datepicker';
 import { CardContent } from '@material-ui/core';
 import 'react-datepicker/dist/react-datepicker.css';
+import Column_Data from './column.json'
 
 var months_words = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
 
@@ -25,12 +26,13 @@ class App extends React.Component {
       expected_delivery_start_time : startOfQuarter(new Date()),
       expected_delivery_end_time : new Date(),
       timestamp_start_time : startOfQuarter(new Date()),
-      timestamp_end_time : endOfDay(new Date())
+      timestamp_end_time : endOfDay(new Date()),
+      column_data :Column_Data
     };
     document.querySelectorAll('body')[0].style = 'background-color: rgb(244, 247, 250);'
   }
   
-/*
+  /*
   componentDidMount() {
     setInterval(() => {
       newUpdates = fetch('https://whatever.url')
@@ -53,10 +55,10 @@ class App extends React.Component {
   };
 
   deleteOrder = (orderid) => {
-    console.log(orderid)
+    
     if (this.state.accordion.orders[orderid].status === true) {
     // delete this.state.accordion.orders[orderid]accordion.columns[""column-3""].orderIds
-    this.state.accordion.columns["column-3"].orderIds.splice(this.state.accordion.columns["column-3"].orderIds.indexOf(orderid), 1)
+    this.state.column_data.columns["column-3"].orderIds.splice(this.state.accordion.columns["column-3"].orderIds.indexOf(orderid), 1)
     // this.state.accordion.orders.filter(order => order !== undefined)
     this.setState({
       ...this.state
@@ -65,20 +67,22 @@ class App extends React.Component {
   }
 
   handleStatus = orderid => () => {
+    
     this.setState({
         accordion :{
           ...this.state.accordion,
           orders: {
             ...this.state.accordion.orders,
-            [orderid]: {
-              ...this.state.accordion.orders[orderid],
-              status: true}
+            [orderid - 1]: {
+              ...this.state.accordion.orders[orderid - 1],
+              status: !this.state.accordion.orders[orderid - 1].status}
             }
           }
         }
       );
-      setTimeout(this.deleteOrder, 600000, orderid);
-    }
+      
+      setTimeout(this.deleteOrder, 600000, orderid - 1);
+  }
 
   convertToTime = (input_time) => {
     var time = new Date(input_time)
@@ -132,15 +136,15 @@ class App extends React.Component {
       return
     }
     
-    const start = this.state.accordion.columns[source.droppableId]
-    const finish = this.state.accordion.columns[destination.droppableId]
+    const start = this.state.column_data.columns[source.droppableId]
+    const finish = this.state.column_data.columns[destination.droppableId]
     
     if (start === finish) {
 
       const newState = {
-        ...this.state.accordion,
+        ...this.state.column_data,
         columns: {
-          ...this.state.accordion.columns,
+          ...this.state.column_data.columns,
 
         }
       }
@@ -153,15 +157,16 @@ class App extends React.Component {
     const startOrderIds = Array.from(start.orderIds)
     const removedorder = startOrderIds[source.index]
     
+    
     startOrderIds.splice(source.index, 1)
     
     const newStart = {
       ...start,
       orderIds: startOrderIds
     }
-
+    
     const finishOrderIds = Array.from(finish.orderIds)
-    finishOrderIds.push(draggableId)
+    finishOrderIds.push(draggableId - 1)
     
     finishOrderIds.sort(function(a, b){return a-b})
     const newFinish = {
@@ -183,8 +188,11 @@ class App extends React.Component {
             status : false
           },
         },
+      },
+      column_data :{
+        ...this.state.column_data,
         columns: {
-          ...this.state.accordion.columns,
+          ...this.state.column_data.columns,
           [newStart.id]: newStart,
           [newFinish.id]: newFinish
         }
@@ -196,6 +204,7 @@ class App extends React.Component {
   }
 
   render() {
+    
     return (
       
       <Grid>
@@ -282,14 +291,14 @@ class App extends React.Component {
         
           <Grid container spacing={24} className={style.grid}>
               <DragDropContext onDragEnd={this.onDragEnd} className={style.mainaccordiontable} >             
-                {this.state.accordion.columnOrder.map(columnId => {
-                    const column = this.state.accordion.columns[columnId]
+                {this.state.column_data.columnOrder.map(columnId => {
+                    const column = this.state.column_data.columns[columnId]
                     const orders = column.orderIds.map(
                       orderIds => this.state.accordion.orders[orderIds]
                     )
                     return(        
-                    <Grid item xs={(column.id === "column-1") ? 6 : 3} key={column.id} >   
-                        <Column key={column.id} 
+                    <Grid item xs={(column.id === "column-1") ? 6 : 3} key={column.id}>   
+                      <Column
                         column={column} 
                         orders={orders} 
                         searchTab={this.state.tab_index} 
@@ -299,10 +308,8 @@ class App extends React.Component {
                         expected_delivery_end_time={this.state.expected_delivery_end_time}
                         timestamp_start_time={this.state.timestamp_start_time}
                         timestamp_end_time={this.state.timestamp_end_time}
-                        />   
-                        </Grid> 
-
-                      )
+                      />
+                    </Grid>)
                     })
                   }
               </DragDropContext>    

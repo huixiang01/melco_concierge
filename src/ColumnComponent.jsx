@@ -93,30 +93,28 @@ export default class Column extends React.Component {
     }
 
   render() {
-    console.log(this.props.orders)
+    
     return (
-     
-        <Card className={style.carddroppable}> 
-          <CardContent className={this.props.column.title==="Pending" ? style.cardtitle1 : 
-          (this.props.column.title==="Processing" ? style.cardtitle2 : style.cardtitle3)}>
-          {this.props.column.title}
-          </CardContent>
-          {this.handleHeading()}
-            <Droppable droppableId={this.props.column.id} type="order" 
-            key={this.props.column.id} >
-              {(provided, snapshot) => (
-                <div className={style.column}
-                  ref={provided.innerRef}
-                  {...provided.droppableProps}
-                  isdraggingover={snapshot.isdraggingover}
-                >
-                  {this.handleOrder()}
-                  {provided.placeholder}
-                </div>
-              )}  
-            </Droppable>         
-        </Card>
-      
+      <Card className={style.carddroppable}> 
+        <CardContent className={this.props.column.title==="Pending" ? style.cardtitle1 : 
+        (this.props.column.title==="Processing" ? style.cardtitle2 : style.cardtitle3)}>
+        {this.props.column.title}
+        </CardContent>
+        {this.handleHeading()}
+          <Droppable droppableId={this.props.column.id} type="order" 
+          key={this.props.column.id} >
+            {(provided, snapshot) => (
+              <div className={style.column}
+                ref={provided.innerRef}
+                {...provided.droppableProps}
+                isdraggingover={snapshot.isdraggingover}
+              >
+                {this.handleOrder()}
+                {provided.placeholder}
+              </div>
+            )}  
+          </Droppable>         
+      </Card>
     )
   }
 }
