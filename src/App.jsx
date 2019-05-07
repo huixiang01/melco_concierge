@@ -191,24 +191,6 @@ class App extends React.Component {
       }
     }
 
-/*
-    if ((start !== finish) && (start.id === 'column-3')) {
-      this.setState({
-        ...this.state,
-        accordion : {
-        ...this.state.accordion,
-        orders : {
-          ...this.state.accordion.orders,
-          [removedorder] : {
-            ...this.state.accordion.orders[removedorder],
-            
-          },
-        },
-
-      })
-    }
-    */
-
     this.setState(newState)
     
   }
@@ -239,6 +221,7 @@ class App extends React.Component {
             selected={this.state.expected_delivery_start_time}
             startDate={this.state.expected_delivery_start_time}
             endDate={this.state.expected_delivery_end_time}
+            showTimeSelect
             selectsStart
             onChange={this.handleStartDeliveryDateChange}
             timeFormat="HH:mm"
@@ -252,6 +235,7 @@ class App extends React.Component {
             selected={this.state.expected_delivery_end_time}
             startDate={this.state.expected_delivery_start_time}
             endDate={this.state.expected_delivery_end_time}
+            showTimeSelect
             selectsEnd
             onChange={this.handleEndDeliveryDateChange}
             timeFormat="HH:mm"
@@ -268,6 +252,7 @@ class App extends React.Component {
             selected={this.state.timestamp_start_time}
             startDate={this.state.timestamp_start_time}
             endDate={this.state.timestamp_end_time}
+            showTimeSelect
             selectsStart
             onChange={this.handleStartTimestampDateChange}
             timeFormat="HH:mm"
@@ -281,7 +266,6 @@ class App extends React.Component {
             selected={this.state.timestamp_end_time}
             startDate={this.state.timestamp_start_time}
             endDate={this.state.timestamp_end_time}
-
             showTimeSelect
             selectsEnd
             onChange={this.handleEndTimestampDateChange}

@@ -97,7 +97,10 @@ export default class Column extends React.Component {
     return (
      
         <Card className={style.carddroppable}> 
-          <CardContent className={style.cardtitle}>{this.props.column.title}</CardContent>
+          <CardContent className={this.props.column.title==="Pending" ? style.cardtitle1 : 
+          (this.props.column.title==="Processing" ? style.cardtitle2 : style.cardtitle3)}>
+          {this.props.column.title}
+          </CardContent>
           {this.handleHeading()}
             <Droppable droppableId={this.props.column.id} type="order" 
             key={this.props.column.id} >
