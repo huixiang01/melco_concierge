@@ -6,24 +6,24 @@ import Card from '@material-ui/core/Card';
 import style from "./index.module.scss";
 import CardContent from '@material-ui/core/CardContent';
 
-
 export default class Column extends React.Component {
 
   handleOrder = () => {
-    return this.props.orders.filter(order => this.props.searchTab === order.type || this.props.searchTab === 0
-    ).map((order, index) => { 
+    return this.props.orders.filter(order => this.props.searchTab === order.type || this.props.searchTab === 0).filter(
+      order => order.expected_delivery_time >= this.props.expected_delivery_start_time && order.expected_delivery_time <= this.props.expected_delivery_end_time).filter(
+      order => (order.timestamp >= this.props.timestamp_start_time && order.timestamp <= this.props.timestamp_end_time) || order.timestamp === null).map(
+      (order, index) => { 
       return (
-                    
       <Order 
       handleStatus={this.props.handleStatus}
       key={order.orderid}
       order={order} 
       index={index} 
       column_id={this.props.column.id} 
+      convertToTime = {this.props.convertToTime}
       />
     )
     })
-    
   }
 
   handleHeading = () => {
@@ -93,10 +93,10 @@ export default class Column extends React.Component {
     }
 
   render() {
-    
+    console.log(this.props.orders)
     return (
      
-        <Card className={style.carddroppable}>      
+        <Card className={style.carddroppable}> 
           <CardContent className={style.cardtitle}>{this.props.column.title}</CardContent>
           {this.handleHeading()}
             <Droppable droppableId={this.props.column.id} type="order" 

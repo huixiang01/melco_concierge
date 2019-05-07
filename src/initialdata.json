@@ -2,198 +2,228 @@
   "orders": {
     "1": {
       "type" : 1,
-      "items" : {
-        "Pork Shank Soup" : {"amount" : 1, "price" : 1056},
-        "Coke" : {"amount" : 3, "price" : 1032},
-        "Water" : {"amount" : 2, "price" : 405}
-      },
+      "items" : [
+        {"name" : "Pork Shank Soup", "amount" : 1, "price" : 1056},
+        {"name" : "Coke",  "amount" : 3, "price" : 1032},
+        {"name" : "Water", "amount" : 2, "price" : 405}
+      ],
       "orderid" : 1,
       "comments":"I want to have more napkins",
       "room": "10-01",
       "name": "John Doe",
-      "expected_delivery_time": "1500hrs @ 1 May",
-      "details": "details",
-      "timestamp":"",
+      "expected_delivery_time": 1556672400000,
+      "timestamp": null,
       "status": false 
     },
     "2": {
       "type" : 1,
-      "items" : {
-        "Pork Shank Soup" : {"amount" : 2, "price" : 1056},
-        "Coke" : {"amount" : 1, "price" : 1032},
-        "Water" : {"amount" : 2, "price" : 405}
-      },
+      "items" : [
+        {"name" : "Pork Shank Soup" , "amount" : 2, "price" : 1056},
+        {"name" : "Coke" , "amount" : 1, "price" : 1032},
+        {"name" : "Water" , "amount" : 2, "price" : 405}
+      ],
       "orderid" : 2,
       "comments":"I want to have more towels",
       "room": "10-02",
       "name": "John Doe",
-      "expected_delivery_time": "1800hrs @ 1 May",
-      "details": "details",
-      "timestamp":"",
+      "expected_delivery_time": 1556676000000,
+      "timestamp": null,
       "status": false 
     },
     "3": {
       "type" : 1,
-      "items" : {
-        "Pork Shank Soup" : {"amount" : 1, "price" : 1056},
-        "Coke" : {"amount" : 2, "price" : 1032},
-        "Water" : {"amount" : 2, "price" : 405}
-      },
+      "items" : [
+        {"name" : "Pork Shank Soup" , "amount" : 1, "price" : 1056},
+        {"name" : "Coke" , "amount" : 2, "price" : 1032},
+        {"name" : "Water" , "amount" : 2, "price" : 405}
+      ],
       "orderid" : 3,
       "comments":"I want to have more napkins. Thank you",
       "room": "10-03",
       "name": "John Doe",
-      "expected_delivery_time": "1000hrs @ 2 May",
-      "details": "details",
-      "timestamp":"",
+      "expected_delivery_time": 1556679600000,
+      "timestamp": null,
       "status": false 
     },
     "4": {
-      "type" : 2 ,
-      "items" : {"Bathing Towel" : {"amount" : 2}, "Towel Set" : {"amount" : 2}, "Water" : {"amount" : 1}},
+      "type" : 2  ,
+      "items" :[ 
+
+        {"name" : "Bathing Towel" , "amount" : 2}, 
+        {"name" : "Towel Set" , "amount" : 2}, 
+        {"name" : "Water" , "amount" : 1}
+      ],
       "orderid" : 4,
       "comments":"I want to have more napkins. Thank you",
       "room": "10-04",
       "name": "John Doe",
-      "expected_delivery_time": "0900hrs @ 3 May",
-      "details": "details",
-      "timestamp":"",
+      "expected_delivery_time": 1556683200000,
+      "timestamp": null,
       "status": false 
     },
     "5": {
       "type" : 2 ,
-      "items" : {"Bathing Towel" : {"amount" : 1}, "Towel Set" : {"amount" : 1}, "Face Towel" : {"amount" : 1}},
+      "items" :[
+        {"name" : "Bathing Towel" , "amount" : 1}, 
+        {"name" : "Towel Set" , "amount" : 1}, 
+        {"name" : "Face Towel" , "amount" : 1}
+      ],
       "orderid" : 5,
       "comments":"I want to have more napkins. Thank you",
       "room": "10-05",
       "name": "John Doe",
-      "expected_delivery_time": "1000hrs @ 3 May",
-      "details": "details",
-      "timestamp":"",
+      "expected_delivery_time": 1556686800000,
+      "timestamp": null,
       "status": false 
     },
     "6": {
-      "type" : 2 ,
-      "items" : {"Bathing Towel" : {"amount" : 1}, "Hand Towel" : {"amount" : 2}, "Water" : {"amount" : 2}},
+      "type" : 2  ,
+      "items" :[
+        {"name" : "Bathing Towel" , "amount" : 1}, 
+        {"name" : "Hand Towel" , "amount" : 2}, 
+        {"name" : "Water" , "amount" : 2}
+      ],
       "orderid" : 6,
       "comments":"I want to have more napkins. Thank you",
       "room": "10-06",
       "name": "John Doe",
-      "expected_delivery_time": "1100hrs @ 3 May",
-      "details": "details",
-      "timestamp":"",
+      "expected_delivery_time": 1556690400000,
+      "timestamp": null,
       "status": false 
     },
     "7": {
       "type" : 2,
-      "items" : {"Hand Towel" : {"amount" : 3}, "Face Towel" : {"amount" : 1}},
+      "items" :[
+        {"name" : "Bathing Towel" , "amount" : 1}, 
+        {"name" : "Hand Towel" , "amount" : 3}, 
+        {"name" : "Face Towel" , "amount" : 1}
+      ],
       "orderid" : 7,
       "comments":"I want to have more napkins. Thank you",
       "room": "10-07",
       "name": "John Doe",
-      "expected_delivery_time": "1200hrs @ 3 May",
-      "details": "details",
-      "timestamp":"",
+      "expected_delivery_time": 1556694000000,
+      "timestamp": null,
       "status": false 
     },
     "8": {
       "type" : 2,
-      "items" : {"Hand Towel" : {"amount" : 2}, "Face Towel" : {"amount" : 3}},
+      "items" :[
+        {"name" : "Bathing Towel" , "amount" : 1}, 
+        {"name" : "Hand Towel" , "amount" : 2}, 
+        {"name" : "Face Towel" , "amount" : 3}
+      ],
       "orderid" : 8,
       "comments":"I want to have more napkins. Thank you",
       "room": "10-08",
       "name": "John Doe",
-      "expected_delivery_time": "1200hrs @ 3 May",
-      "details": "details",
-      "timestamp":"",
+      "expected_delivery_time": 1556697600000,
+      "timestamp": null,
       "status": false 
     },
     "9": {
-      "type" : 2,
-      "items" : {"Bathing Towel" : {"amount" : 1}, "Hand Towel" : {"amount" : 2}, "Water" : {"amount" : 2}},
+      "type" : 2 ,
+      "items" :[
+        {"name" : "Bathing Towel" , "amount" : 1}, 
+        {"name" : "Hand Towel" , "amount" : 2}, 
+        {"name" : "Water" , "amount" : 2}
+      ],
       "orderid" : 9,
       "comments":"I want to have more napkins. Thank you",
       "room": "10-09",
       "name": "John Doe",
-      "expected_delivery_time": "2200hrs @ 3 May",
-      "details": "details",
-      "timestamp":"",
+      "expected_delivery_time": 1556701200000,
+      "timestamp": null,
       "status": false 
     },
     "10": {
       "type" : 1,
-      "items" : {
-        "Pork Shank Soup" : {"amount" : 2, "price" : 1056},
-        "Coke" : {"amount" : 1, "price" : 1032},
-        "Water" : {"amount" : 2, "price" : 405}
-      },
+      "items" : [
+        {"name" : "Pork Shank Soup" , "amount" : 2, "price" : 1056},
+        {"name" : "Coke" , "amount" : 1, "price" : 1032},
+        {"name" : "Water" , "amount" : 2, "price" : 405}
+      ],
       "orderid" : 10,
       "comments":"I want to have more towels",
       "room": "10-10",
       "name": "John Doe",
-      "expected_delivery_time": "2100hrs @ 3 May",
-      "details": "details",
-      "timestamp":"",
+      "expected_delivery_time": 1556704800000,
+      "timestamp": null,
       "status": false 
     },
     "11": {
-      "type" : 2,
-      "items" : {"Bathing Towel" : {"amount" : 2}, "Towel Set" : {"amount" : 2}, "Water" : {"amount" : 1}},
+      "type" : 1 ,
+      "items" :[
+        {"name" : "Pork Shank Soup" , "amount" : 2, "price" : 1056},
+        {"name" : "Coke" , "amount" : 2, "price" : 1032},
+        {"name" : "Water" , "amount" : 2, "price" : 405}
+      ],
       "orderid" : 11,
       "comments":"I want to have more napkins. Thank you",
       "room": "10-11",
       "name": "John Doe",
-      "expected_delivery_time": "1200hrs @ 3 May",
-      "details": "details",
-      "timestamp":"",
+      "expected_delivery_time": 1556708400000,
+      "timestamp": null,
       "status": false 
     },
     "12": {
-      "type" : 2,
-      "items" : {"Bathing Towel" : {"amount" : 2}, "Towel Set" : {"amount" : 2}, "Water" : {"amount" : 1}},
+      "type" : 2 ,
+      "items" :[
+        {"name" : "Bathing Towel" , "amount" : 2}, 
+        {"name" : "Towel Set" , "amount" : 2}, 
+        {"name" : "Water" , "amount" : 1}
+      ],
       "orderid" : 12,
       "comments":"I want to have more napkins. Thank you",
       "room": "10-12",
-      "name": "John Doe",
-      "expected_delivery_time": "1200hrs @ 3 May",
-      "details": "details",
-      "timestamp":"",
+      "name": "John Doe", 
+      "expected_delivery_time": 1556712000000,
+      "timestamp": null,
       "status": false 
     },
     "13": {
-      "type" : 2,
-      "items" : {"Bathing Towel" : {"amount" : 2}, "Towel Set" : {"amount" : 2}, "Water" : {"amount" : 1}},
+      "type" : 2 ,
+      "items" :[
+        {"name" : "Bathing Towel" , "amount" : 2}, 
+        {"name" : "Towel Set" , "amount" : 2}, 
+        {"name" : "Water" , "amount" : 1}
+      ],
       "orderid" : 13,
       "comments":"I want to have more napkins. Thank you",
       "room": "10-13",
       "name": "John Doe",
-      "expected_delivery_time": "1200hrs @ 3 May",
-      "details": "details",
-      "timestamp":"",
+      "expected_delivery_time": 1556715600000,
+      "timestamp": null,
       "status": false 
     },
     "14": {
-      "type" : 2,
-      "items" : {"Bathing Towel" : {"amount" : 2}, "Towel Set" : {"amount" : 2}, "Water" : {"amount" : 1}},
+      "type" : 2 ,
+      "items" :[
+        {"name" : "Bathing Towel" , "amount" : 2}, 
+        {"name" : "Towel Set" , "amount" : 2}, 
+        {"name" : "Water" , "amount" : 1}
+      ],
       "orderid" : 14,
       "comments":"I want to have more napkins. Thank you",
       "room": "10-14",
       "name": "John Doe",
-      "expected_delivery_time": "1200hrs @ 3 May",
-      "details": "details",
-      "timestamp":"",
+      "expected_delivery_time": 1556719200000,
+      "timestamp": null,
       "status": false 
     },
     "15": {
-      "type" : 2,
-      "items" : {"Bathing Towel" : {"amount" : 2}, "Towel Set" : {"amount" : 2}, "Water" : {"amount" : 1}},
+      "type" : 2 ,
+      "items" :[
+        {"name" : "Bathing Towel" , "amount" : 2}, 
+        {"name" : "Towel Set" , "amount" : 2}, 
+        {"name" : "Water" , "amount" : 1}
+      ],
       "orderid" : 15,
       "comments":"I want to have more napkins. Thank you",
       "room": "10-15",
       "name": "John Doe",
-      "expected_delivery_time": "1200hrs @ 3 May",
-      "details": "details",
-      "timestamp":"",
+      "expected_delivery_time": 1556722800000,
+      "timestamp": null,
       "status": false 
     }
   },

@@ -84,8 +84,8 @@ export default class OrderDetailsService extends React.Component {
                     <tbody>
 
                         {Object.entries(this.props.order.items).map(([item, itemdetails]) => { return (
-                        <tr key={this.props.order.orderid + item}>
-                            <th width="70%" align="left">{item}</th>
+                        <tr key={this.props.order.orderid + itemdetails.name}>
+                            <th width="70%" align="left">{itemdetails.name}</th>
                             <th width="30%" align="right">{itemdetails.amount}</th>
                         </tr>
                         )})}
@@ -102,7 +102,7 @@ export default class OrderDetailsService extends React.Component {
                         </thead>
                     <tbody>
                         <tr>
-                            <th width="100%" align="left" className={style.nobold}>{this.props.order.expected_delivery_time}</th>
+                            <th width="100%" align="left" className={style.nobold}>{this.props.convertToTime(this.props.order.expected_delivery_time)}</th>
                             </tr>
                         </tbody>    
                     </table>
