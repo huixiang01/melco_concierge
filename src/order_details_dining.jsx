@@ -73,7 +73,7 @@ export default class OrderDetailsService extends React.Component {
                         </tr>
                         <tr>
                             <th width="50%" align="left" className={style.nobold}>{this.props.order.orderid}</th>
-                            <th width="50%" align="right" className={style.nobold}>5pm @ 11/11/2019</th></tr>
+                            <th width="50%" align="right" className={style.nobold}>{this.props.convertToTime(this.props.order.ordertime)}</th></tr>
                     </tbody>
                 </table>
                 <hr/>
@@ -81,18 +81,17 @@ export default class OrderDetailsService extends React.Component {
                 <table width="100%">
                     <thead>
                         <tr>
-                            <th width="50%" align="left">Items</th>
-                            <th width="30%" align="right">Quantity</th>
+                            <th width="60%" align="left">Items</th>
+                            <th width="20%" align="right">Quantity</th>
                             <th width="20%" align="right">Price</th>
                         </tr>
                     </thead>
                     <tbody>
-
                         {Object.entries(this.props.order.items).map(([item, itemdetails]) => { return (
                         <tr key={this.props.order.orderid + item}>
-                            <th width="50%" align="left">{itemdetails.name}</th>
-                            <th width="30%" align="right">{itemdetails.amount}</th>
-                            <th width="20%" align="right">{itemdetails.price}</th>
+                            <th width="60%" align="left" className={style.orderitems}>{itemdetails.name}</th>
+                            <th width="20%" align="right" className={style.orderitems}>{itemdetails.amount}</th>
+                            <th width="20%" align="right" className={style.orderitems}>{itemdetails.price}</th>
                         </tr>
                         )})}
                     </tbody>
