@@ -24,7 +24,7 @@ class App extends React.Component {
       accordion: initialData,
       tab_index: 0,
       expected_delivery_start_time: startOfQuarter(new Date()),
-      expected_delivery_end_time: new Date(),
+      expected_delivery_end_time: endOfDay(new Date()),
       timestamp_start_time: startOfQuarter(new Date()),
       timestamp_end_time: endOfDay(new Date()),
       column_data: Column_Data

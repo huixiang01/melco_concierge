@@ -117,7 +117,7 @@ export default class Order extends React.Component {
 
       >
         {(provided, snapshot) => (
-          <div className={style.order}
+          <div className={this.props.order_type === 1 ? style.order : style.order1}
             {...provided.draggableProps}
             {...provided.dragHandleProps}
             ref={provided.innerRef}
