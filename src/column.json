@@ -1,25 +1,59 @@
 {
-    "columns": {
+  "columns": {
     "column-1": {
       "id": "column-1",
       "title": "Pending",
-      "orderIds": [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14],
-      "fields" :["Items", "OrderID","Room", "Name", "Expected Delivery Time", "Details"]
+      "orderIds": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14
+      ],
+      "fields": [
+        "Items",
+        "OrderID",
+        "Room",
+        "Name",
+        "Expected Delivery Time",
+        "Details"
+      ]
     },
     "column-2": {
       "id": "column-2",
       "title": "Processing",
       "orderIds": [],
-      "fields" :["Room", "Time Processsed","Details"]
+      "fields": [
+        "Room",
+        "Time Processsed",
+        "Details"
+      ]
     },
     "column-3": {
       "id": "column-3",
       "title": "Delivering",
       "orderIds": [],
-      "fields" :["Room", "Time Sent","Details", "Status"]
+      "fields": [
+        "Room",
+        "Time Sent",
+        "Details",
+        "Status"
+      ]
     }
   },
-  
-  "columnOrder": ["column-1", "column-2", "column-3"]
-  
+  "columnOrder": [
+    "column-1",
+    "column-2",
+    "column-3"
+  ]
 }
