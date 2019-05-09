@@ -186,8 +186,8 @@
 }
 
 .details_box {
-  width : 250px;
-  height : 480px;
+  width : auto;
+  height : auto;
   padding : 0px;
   margin: 0px;
 }
@@ -201,6 +201,7 @@
 .details_content {
   padding : 10px;
   font-size : 0.8em;
+  
 }
 
 .field {
@@ -225,6 +226,7 @@
 .nobold {
   font-weight: 10; 
   font-family: serif;
+  width:50%
 }
 
 .green {

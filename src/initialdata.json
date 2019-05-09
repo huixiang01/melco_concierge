@@ -1,394 +1,114 @@
-{
-  "orders": [
-    {
-      "type": 1,
-      "items": [
-        {
-          "name": "Pork Shank Soup",
-          "amount": 1,
-          "price": 1056
+[
+  {
+    "id": 276,
+    "status": 0,
+    "deliveryDay": "2019-05-09T05:11",
+    "guestName": "1234",
+    "order_index" : 1,
+    "timestamp" : null,
+    "orderItems": [
+      {
+        "itemId": 3,
+        "item": {
+          "name": "Double-boiled Cordyceps Flower Pork Shank Soup with Yam and Wolfberries   \r\n蟲草花淮山杞子燉豬腱",
+          "pictureUrl": "https://i.imgur.com/YN1qN7O.jpg",
+          "price": 118.0,
+          "typeOfItem": 0,
+          "maxQty": 10,
+          "id": 3,
+          "createdDate": "2018-10-10T00:00:00+08:00"
         },
-        {
-          "name": "Coke",
-          "amount": 3,
-          "price": 1032
+        "qty": 1,
+        "unitPrice": 0.0,
+        "totalPrice": 0.0,
+        "id": 101,
+        "createdDate": "2019-05-09T05:12:06.3766667+00:00"
+      },
+      {
+        "itemId": 4,
+        "item": {
+          "name": "Sichuan Style Marinated Chicken with Spicy Sauce  川味口水雞",
+          "pictureUrl": "https://i.imgur.com/SVY184w.jpg",
+          "price": 138.0,
+          "typeOfItem": 0,
+          "maxQty": 10,
+          "id": 4,
+          "createdDate": "2018-10-10T00:00:00+08:00"
         },
-        {
-          "name": "Water",
-          "amount": 2,
-          "price": 405
-        }
-      ],
-      "orderid": 1,
-      "comments": "I want to have more napkins",
-      "room": "10-01",
-      "name": "John Doe",
-      "expected_delivery_time": 1556672400000,
-      "timestamp": null,
-      "status": false,
-      "ordertime": 1556668800000
-    },
-    {
-      "type": 1,
-      "items": [
-        {
-          "name": "Pork Shank Soup",
-          "amount": 2,
-          "price": 1056
+        "qty": 1,
+        "unitPrice": 0.0,
+        "totalPrice": 0.0,
+        "id": 102,
+        "createdDate": "2019-05-09T05:12:06.3766667+00:00"
+      },
+      {
+        "itemId": 5,
+        "item": {
+          "name": "Sliced Abalone and Assorted Seafood Congee 鮑魚海鮮粥",
+          "pictureUrl": "https://i.imgur.com/ucIv8eb.jpg",
+          "price": 288.0,
+          "typeOfItem": 0,
+          "maxQty": 10,
+          "id": 5,
+          "createdDate": "2018-10-10T00:00:00+08:00"
         },
-        {
-          "name": "Coke",
-          "amount": 1,
-          "price": 1032
+        "qty": 1,
+        "unitPrice": 0.0,
+        "totalPrice": 0.0,
+        "id": 103,
+        
+        "createdDate": "2019-05-09T05:12:06.3766667+00:00"
+      }
+    ],
+    "roomNumber": "1234",
+    "userId": 346,
+    "type": 1
+  },
+  {
+    "id": 274,
+    "status": 0,
+    "deliveryDay": "2019-05-09T04:57",
+    "guestName": "Nhat",
+    "order_index" : 2,
+    "timestamp" : null,
+    "orderItems": [
+      {
+        "itemId": 11,
+        "item": {
+          "name": "Water bottle (250ml) 饮用水 (250毫升)",
+          "pictureUrl": "https://i.imgur.com/pbW3wy5.jpg",
+          "price": 0.0,
+          "typeOfItem": 1,
+          "maxQty": 4,
+          "id": 11,
+          "createdDate": "2018-10-10T00:00:00+08:00"
         },
-        {
-          "name": "Water",
-          "amount": 2,
-          "price": 405
-        }
-      ],
-      "orderid": 2,
-      "comments": "I want to have more towels",
-      "room": "10-02",
-      "name": "John Doe",
-      "expected_delivery_time": 1556676000000,
-      "timestamp": null,
-      "status": false,
-      "ordertime": 1556668800000
-    },
-    {
-      "type": 1,
-      "items": [
-        {
-          "name": "Pork Shank Soup",
-          "amount": 1,
-          "price": 1056
+        "qty": 1,
+        "unitPrice": 0.0,
+        "totalPrice": 0.0,
+        "id": 98,
+        "createdDate": "2019-05-09T04:57:19.1533333+00:00"
+      },
+      {
+        "itemId": 12,
+        "item": {
+          "name": "Bathing towel 浴巾",
+          "pictureUrl": "https://i.imgur.com/gYxRM4q.jpg",
+          "price": 0.0,
+          "typeOfItem": 1,
+          "maxQty": 5,
+          "id": 12,
+          "createdDate": "2018-10-10T00:00:00+08:00"
         },
-        {
-          "name": "Coke",
-          "amount": 2,
-          "price": 1032
-        },
-        {
-          "name": "Water",
-          "amount": 2,
-          "price": 405
-        }
-      ],
-      "orderid": 3,
-      "comments": "I want to have more napkins. Thank you",
-      "room": "10-03",
-      "name": "John Doe",
-      "expected_delivery_time": 1556679600000,
-      "timestamp": null,
-      "status": false,
-      "ordertime": 1556668800000
-    },
-    {
-      "type": 2,
-      "items": [
-        {
-          "name": "Bathing Towel",
-          "amount": 2
-        },
-        {
-          "name": "Towel Set",
-          "amount": 2
-        },
-        {
-          "name": "Water",
-          "amount": 1
-        }
-      ],
-      "orderid": 4,
-      "comments": "I want to have more napkins. Thank you",
-      "room": "10-04",
-      "name": "John Doe",
-      "expected_delivery_time": 1556683200000,
-      "timestamp": null,
-      "status": false,
-      "ordertime": 1556668800000
-    },
-    {
-      "type": 2,
-      "items": [
-        {
-          "name": "Bathing Towel",
-          "amount": 1
-        },
-        {
-          "name": "Towel Set",
-          "amount": 1
-        },
-        {
-          "name": "Face Towel",
-          "amount": 1
-        }
-      ],
-      "orderid": 5,
-      "comments": "I want to have more napkins. Thank you",
-      "room": "10-05",
-      "name": "John Doe",
-      "expected_delivery_time": 1556686800000,
-      "timestamp": null,
-      "status": false,
-      "ordertime": 1556668800000
-    },
-    {
-      "type": 2,
-      "items": [
-        {
-          "name": "Bathing Towel",
-          "amount": 1
-        },
-        {
-          "name": "Hand Towel",
-          "amount": 2
-        },
-        {
-          "name": "Water",
-          "amount": 2
-        }
-      ],
-      "orderid": 6,
-      "comments": "I want to have more napkins. Thank you",
-      "room": "10-06",
-      "name": "John Doe",
-      "expected_delivery_time": 1556690400000,
-      "timestamp": null,
-      "status": false,
-      "ordertime": 1556668800000
-    },
-    {
-      "type": 2,
-      "items": [
-        {
-          "name": "Bathing Towel",
-          "amount": 1
-        },
-        {
-          "name": "Hand Towel",
-          "amount": 3
-        },
-        {
-          "name": "Face Towel",
-          "amount": 1
-        }
-      ],
-      "orderid": 7,
-      "comments": "I want to have more napkins. Thank you",
-      "room": "10-07",
-      "name": "John Doe",
-      "expected_delivery_time": 1556694000000,
-      "timestamp": null,
-      "status": false,
-      "ordertime": 1556668800000
-    },
-    {
-      "type": 2,
-      "items": [
-        {
-          "name": "Bathing Towel",
-          "amount": 1
-        },
-        {
-          "name": "Hand Towel",
-          "amount": 2
-        },
-        {
-          "name": "Face Towel",
-          "amount": 3
-        }
-      ],
-      "orderid": 8,
-      "comments": "I want to have more napkins. Thank you",
-      "room": "10-08",
-      "name": "John Doe",
-      "expected_delivery_time": 1556697600000,
-      "timestamp": null,
-      "status": false,
-      "ordertime": 1556668800000
-    },
-    {
-      "type": 2,
-      "items": [
-        {
-          "name": "Bathing Towel",
-          "amount": 1
-        },
-        {
-          "name": "Hand Towel",
-          "amount": 2
-        },
-        {
-          "name": "Water",
-          "amount": 2
-        }
-      ],
-      "orderid": 9,
-      "comments": "I want to have more napkins. Thank you",
-      "room": "10-09",
-      "name": "John Doe",
-      "expected_delivery_time": 1556701200000,
-      "timestamp": null,
-      "status": false,
-      "ordertime": 1556668800000
-    },
-    {
-      "type": 1,
-      "items": [
-        {
-          "name": "Pork Shank Soup",
-          "amount": 2,
-          "price": 1056
-        },
-        {
-          "name": "Coke",
-          "amount": 1,
-          "price": 1032
-        },
-        {
-          "name": "Water",
-          "amount": 2,
-          "price": 405
-        }
-      ],
-      "orderid": 10,
-      "comments": "I want to have more towels",
-      "room": "10-10",
-      "name": "John Doe",
-      "expected_delivery_time": 1556704800000,
-      "timestamp": null,
-      "status": false,
-      "ordertime": 1556668800000
-    },
-    {
-      "type": 1,
-      "items": [
-        {
-          "name": "Pork Shank Soup",
-          "amount": 2,
-          "price": 1056
-        },
-        {
-          "name": "Coke",
-          "amount": 2,
-          "price": 1032
-        },
-        {
-          "name": "Water",
-          "amount": 2,
-          "price": 405
-        }
-      ],
-      "orderid": 11,
-      "comments": "I want to have more napkins. Thank you",
-      "room": "10-11",
-      "name": "John Doe",
-      "expected_delivery_time": 1556708400000,
-      "timestamp": null,
-      "status": false,
-      "ordertime": 1556668800000
-    },
-    {
-      "type": 2,
-      "items": [
-        {
-          "name": "Bathing Towel",
-          "amount": 2
-        },
-        {
-          "name": "Towel Set",
-          "amount": 2
-        },
-        {
-          "name": "Water",
-          "amount": 1
-        }
-      ],
-      "orderid": 12,
-      "comments": "I want to have more napkins. Thank you",
-      "room": "10-12",
-      "name": "John Doe",
-      "expected_delivery_time": 1556712000000,
-      "timestamp": null,
-      "status": false,
-      "ordertime": 1556668800000
-    },
-    {
-      "type": 2,
-      "items": [
-        {
-          "name": "Bathing Towel",
-          "amount": 2
-        },
-        {
-          "name": "Towel Set",
-          "amount": 2
-        },
-        {
-          "name": "Water",
-          "amount": 1
-        }
-      ],
-      "orderid": 13,
-      "comments": "I want to have more napkins. Thank you",
-      "room": "10-13",
-      "name": "John Doe",
-      "expected_delivery_time": 1556715600000,
-      "timestamp": null,
-      "status": false,
-      "ordertime": 1556668800000
-    },
-    {
-      "type": 2,
-      "items": [
-        {
-          "name": "Bathing Towel",
-          "amount": 2
-        },
-        {
-          "name": "Towel Set",
-          "amount": 2
-        },
-        {
-          "name": "Water",
-          "amount": 1
-        }
-      ],
-      "orderid": 14,
-      "comments": "I want to have more napkins. Thank you",
-      "room": "10-14",
-      "name": "John Doe",
-      "expected_delivery_time": 1556719200000,
-      "timestamp": null,
-      "status": false,
-      "ordertime": 1556668800000
-    },
-    {
-      "type": 2,
-      "items": [
-        {
-          "name": "Bathing Towel",
-          "amount": 2
-        },
-        {
-          "name": "Towel Set",
-          "amount": 2
-        },
-        {
-          "name": "Water",
-          "amount": 1
-        }
-      ],
-      "orderid": 15,
-      "comments": "I want to have more napkins. Thank you",
-      "room": "10-15",
-      "name": "John Doe",
-      "expected_delivery_time": 1556722800000,
-      "timestamp": null,
-      "status": false,
-      "ordertime": 1556668800000
-    }
-  ]
-}
+        "qty": 3,
+        "unitPrice": 0.0,
+        "totalPrice": 0.0,
+        "id": 99,
+        "createdDate": "2019-05-09T04:57:19.1533333+00:00"
+      }
+    ],
+    "roomNumber": "A123",
+    "userId": 333,
+    "type": 2
+  }
+]

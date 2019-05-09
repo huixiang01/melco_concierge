@@ -1,5 +1,5 @@
 import React from 'react'
-import propTypes from 'prop-types';
+//import propTypes from 'prop-types';
 import { Draggable } from 'react-beautiful-dnd'
 import style from './index.module.scss'
 import OrderDetailsService from './order_details_service';
@@ -7,9 +7,10 @@ import OrderDetailsDining from './order_details_dining';
 import Switch from '@material-ui/core/Switch';
 
 export default class Order extends React.Component {
-
+ 
   handleTableOrder = () => {
-    if (this.props.column_id === "column-1") {
+    
+    if (this.props.column_id === "column1") {
       var Objectlength = Object.entries(this.props.order_items).length - 1
       return (
         <table width="100%" className={style.field}>
@@ -17,9 +18,11 @@ export default class Order extends React.Component {
             <tr>
               <td width="40%" align="left">
                 {Object.entries(this.props.order_items).map(([item, itemdetails]) => {
+
                   Objectlength -= 1;
                   return (
-                    <span key={itemdetails.name + itemdetails.amount}>{itemdetails.name} X {itemdetails.amount}{Objectlength === -1 ? undefined : ","} </span>)
+                    <span key={itemdetails.item.name}>{itemdetails.item.name} X {itemdetails.item.qty}{Objectlength === -1 ? undefined : ","} </span>
+                  )
                 })}
               </td>
               <td width="10%" align="left">
@@ -36,23 +39,31 @@ export default class Order extends React.Component {
               </td>
               <td width="10%" align="left">
                 {this.props.order_type === 1 ?
-                  <OrderDetailsDining 
-                  order_name={this.props.order_name} 
+                  <OrderDetailsDining
+                    order_name={this.props.order_name}
+                    order_room={this.props.order_room}
+                    order_id={this.props.order_id}
+                    order_ordertime={new Date(this.props.order_items[0].createdDate)}
+                    order_items={this.props.order_items}
+                    order_comments={this.props.order_comments}
+                    order_expected_delivery_time={this.props.order_expected_delivery_time}
+                    convertToTime={this.props.convertToTime} />
+                  :
+                  <OrderDetailsService order_name={this.props.order_name} 
                   order_room={this.props.order_room} 
                   order_id={this.props.order_id} 
-                  order_ordertime={this.props.order_ordertime} 
+                  order_ordertime={new Date(this.props.order_items[0].createdDate)} 
                   order_items={this.props.order_items} 
                   order_comments={this.props.order_comments} 
                   order_expected_delivery_time={this.props.order_expected_delivery_time} 
-                  convertToTime={this.props.convertToTime} /> 
-                  :
-                  <OrderDetailsService order_name={this.props.order_name} order_room={this.props.order_room} order_id={this.props.order_id} order_ordertime={this.props.order_ordertime} order_items={this.props.order_items} order_comments={this.props.order_comments} order_expected_delivery_time={this.props.order_expected_delivery_time} convertToTime={this.props.convertToTime} order={this.props.order} />}
+                  convertToTime={this.props.convertToTime} 
+                  order={this.props.order} />}
               </td>
             </tr>
           </tbody>
         </table>
       )
-    } else if (this.props.column_id === "column-2") {
+    } else if (this.props.column_id === "column2") {
       return (
         <table width="100%" className={style.field}>
           <tbody>
@@ -63,16 +74,33 @@ export default class Order extends React.Component {
               <td width="33.3%" align="left">
                 {this.props.convertToTime(this.props.order_timestamp)}
               </td>
-              <td width="33.3%" align="left" >
+              <td width="33.3%" align="left">
                 {this.props.order_type === 1 ?
-                  <OrderDetailsDining order_name={this.props.order_name} order_room={this.props.order_room} order_id={this.props.order_id} order_ordertime={this.props.order_ordertime} order_items={this.props.order_items} order_comments={this.props.order_comments} order_expected_delivery_time={this.props.order_expected_delivery_time} convertToTime={this.props.convertToTime} /> :
-                  <OrderDetailsService order_name={this.props.order_name} order_room={this.props.order_room} order_id={this.props.order_id} order_ordertime={this.props.order_ordertime} order_items={this.props.order_items} order_comments={this.props.order_comments} order_expected_delivery_time={this.props.order_expected_delivery_time} convertToTime={this.props.convertToTime} order={this.props.order} />}
+                  <OrderDetailsDining
+                    order_name={this.props.order_name}
+                    order_room={this.props.order_room}
+                    order_id={this.props.order_id}
+                    order_ordertime={new Date(this.props.order_items[0].createdDate)}
+                    order_items={this.props.order_items}
+                    order_comments={this.props.order_comments}
+                    order_expected_delivery_time={this.props.order_expected_delivery_time}
+                    convertToTime={this.props.convertToTime} />
+                  :
+                  <OrderDetailsService order_name={this.props.order_name} 
+                  order_room={this.props.order_room} 
+                  order_id={this.props.order_id} 
+                  order_ordertime={new Date(this.props.order_items[0].createdDate)} 
+                  order_items={this.props.order_items} 
+                  order_comments={this.props.order_comments} 
+                  order_expected_delivery_time={this.props.order_expected_delivery_time} 
+                  convertToTime={this.props.convertToTime} 
+                  order={this.props.order} />}
               </td>
             </tr>
           </tbody>
         </table>
       )
-    } else if (this.props.column_id === "column-3") {
+    } else if (this.props.column_id === "column3") {
       return (
         <table width="100%" className={style.field}>
           <tbody>
@@ -85,19 +113,36 @@ export default class Order extends React.Component {
               </td>
               <td width="20%" align="left">
                 {this.props.order_type === 1 ?
-                  <OrderDetailsDining order_name={this.props.order_name} order_room={this.props.order_room} order_id={this.props.order_id} order_ordertime={this.props.order_ordertime} order_items={this.props.order_items} order_comments={this.props.order_comments} order_expected_delivery_time={this.props.order_expected_delivery_time} convertToTime={this.props.convertToTime} /> :
-                  <OrderDetailsService order_name={this.props.order_name} order_room={this.props.order_room} order_id={this.props.order_id} order_ordertime={this.props.order_ordertime} order_items={this.props.order_items} order_comments={this.props.order_comments} order_expected_delivery_time={this.props.order_expected_delivery_time} convertToTime={this.props.convertToTime} order={this.props.order} />}
+                  <OrderDetailsDining
+                    order_name={this.props.order_name}
+                    order_room={this.props.order_room}
+                    order_id={this.props.order_id}
+                    order_ordertime={new Date(this.props.order_items[0].createdDate)}
+                    order_items={this.props.order_items}
+                    order_comments={this.props.order_comments}
+                    order_expected_delivery_time={this.props.order_expected_delivery_time}
+                    convertToTime={this.props.convertToTime} />
+                  :
+                  <OrderDetailsService order_name={this.props.order_name} 
+                  order_room={this.props.order_room} 
+                  order_id={this.props.order_id} 
+                  order_ordertime={new Date(this.props.order_items[0].createdDate)} 
+                  order_items={this.props.order_items} 
+                  order_comments={this.props.order_comments} 
+                  order_expected_delivery_time={this.props.order_expected_delivery_time} 
+                  convertToTime={this.props.convertToTime} 
+                  order={this.props.order} />}
               </td>
               <td width="25%" align="left" >
-                <Switch 
-                className={style.padding_required}
-                checked={this.props.order_status} 
-                onChange={this.props.handleStatus(this.props.order_id)} 
-                value={this.props.order_status} 
-                color="primary">
+                <Switch
+                  className={style.padding_required}
+                  checked={Boolean(this.props.order_status)}
+                  onChange={this.props.handleStatus(this.props.order_index)}
+                  value={this.props.order_status}
+                  color="primary">
                 </Switch>
                 <span className={style.padding_required}>{this.props.order_status === false ? "Delivering" : "Delivered"}</span>
-                
+
               </td>
             </tr>
           </tbody>
@@ -108,10 +153,10 @@ export default class Order extends React.Component {
 
 
   render() {
-
+    
     return (
       <Draggable
-        draggableId={this.props.order_id}
+        draggableId={this.props.order_index}
         index={this.props.index}
         key={this.props.index}
 
@@ -132,17 +177,3 @@ export default class Order extends React.Component {
   }
 }
 
-Order.propTypes = {
-  order_comments : propTypes.string,
-  order_expected_delivery_time : propTypes.number,
-  order_items : propTypes.array,
-  order_name : propTypes.string,
-  order_id : propTypes.oneOfType([propTypes.string, propTypes.number]),
-  order_ordertime : propTypes.number,
-  order_room : propTypes.string,
-  order_status : propTypes.bool,
-  order_timestamp : propTypes.instanceOf(Date),
-  order_type : propTypes.number,
-  column_id: propTypes.string,
-  convertToTime: propTypes.func
-}

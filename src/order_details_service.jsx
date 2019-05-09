@@ -1,6 +1,6 @@
 import React from 'react'
 import style from './index.module.scss'
-import propTypes from 'prop-types';
+//import propTypes from 'prop-types';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
@@ -86,9 +86,9 @@ export default class OrderDetailsService extends React.Component {
 
                                         {Object.entries(this.props.order_items).map(([item, itemdetails]) => {
                                             return (
-                                                <tr key={this.props.order_id + itemdetails.name} >
-                                                    <th width="70%" align="left" className={style.orderitems}>{itemdetails.name}</th>
-                                                    <th width="30%" align="right" className={style.orderitems}>{itemdetails.amount}</th>
+                                                <tr key={this.props.order_id + item} >
+                                                    <th width="70%" align="left" className={style.orderitems}>{itemdetails.item.name}</th>
+                                                    <th width="30%" align="right" className={style.orderitems}>{itemdetails.qty}</th>
                                                 </tr>
                                             )
                                         })}
@@ -119,15 +119,4 @@ export default class OrderDetailsService extends React.Component {
             </div>
         );
     }
-}
-
-OrderDetailsService.propTypes = {
-    order_comments: propTypes.string,
-    order_expected_delivery_time: propTypes.number,
-    order_items: propTypes.array,
-    order_name: propTypes.string,
-    order_id: propTypes.oneOfType([propTypes.string, propTypes.number]),
-    order_ordertime: propTypes.number,
-    order_room: propTypes.string,
-    convertToTime: propTypes.func
 }

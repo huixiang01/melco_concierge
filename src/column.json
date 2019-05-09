@@ -1,25 +1,9 @@
 {
   "columns": {
-    "column-1": {
-      "id": "column-1",
+    "column1": {
+      "id": "column1",
       "title": "Pending",
-      "orderIds": [
-        0,
-        1,
-        2,
-        3,
-        4,
-        5,
-        6,
-        7,
-        8,
-        9,
-        10,
-        11,
-        12,
-        13,
-        14
-      ],
+      "orderIds": [0, 1],
       "fields": [
         "Items",
         "OrderID",
@@ -29,8 +13,8 @@
         "Details"
       ]
     },
-    "column-2": {
-      "id": "column-2",
+    "column2": {
+      "id": "column2",
       "title": "Processing",
       "orderIds": [],
       "fields": [
@@ -39,8 +23,8 @@
         "Details"
       ]
     },
-    "column-3": {
-      "id": "column-3",
+    "column3": {
+      "id": "column3",
       "title": "Delivering",
       "orderIds": [],
       "fields": [
@@ -52,8 +36,8 @@
     }
   },
   "columnOrder": [
-    "column-1",
-    "column-2",
-    "column-3"
+    "column1",
+    "column2",
+    "column3"
   ]
 }

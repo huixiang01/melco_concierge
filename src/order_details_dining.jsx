@@ -1,6 +1,6 @@
 import React from 'react'
 import style from './index.module.scss'
-import propTypes from 'prop-types';
+//import propTypes from 'prop-types';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
@@ -14,7 +14,7 @@ export default class OrderDetailsDining extends React.Component {
 
     totalPrice = () => {
         return (Object.values(this.props.order_items).reduce(function (currentTotal, item) {
-            return currentTotal + item.price
+            return currentTotal + item.item.price
         }, 0))
     }
 
@@ -31,6 +31,7 @@ export default class OrderDetailsDining extends React.Component {
     render() {
         const { anchorEl } = this.state;
         const open = Boolean(anchorEl);
+        
 
         return (
             <div>
@@ -72,18 +73,18 @@ export default class OrderDetailsDining extends React.Component {
                                 <table width="100%">
                                     <thead>
                                         <tr>
-                                            <th width="60%" align="left">Items</th>
-                                            <th width="20%" align="right">Quantity</th>
-                                            <th width="20%" align="right">Price</th>
+                                            <th width="70%" align="left">Items</th>
+                                            <th width="15%" align="right">Quantity</th>
+                                            <th width="15%" align="right">Price</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         {Object.entries(this.props.order_items).map(([item, itemdetails]) => {
                                             return (
                                                 <tr key={this.props.order_orderid + item}>
-                                                    <th width="60%" align="left" className={style.orderitems}>{itemdetails.name}</th>
-                                                    <th width="20%" align="right" className={style.orderitems}>{itemdetails.amount}</th>
-                                                    <th width="20%" align="right" className={style.orderitems}>{itemdetails.price}</th>
+                                                    <th width="70%" align="left" className={style.orderitems}>{itemdetails.item.name}</th>
+                                                    <th width="15%" align="right" className={style.orderitems}>{itemdetails.qty}</th>
+                                                    <th width="15%" align="right" className={style.orderitems}>{itemdetails.item.price}</th>
                                                 </tr>
                                             )
                                         })}
@@ -105,14 +106,18 @@ export default class OrderDetailsDining extends React.Component {
                                             <td width="50%" align="right" className={style.nobold}>
                                                 {this.totalPrice()}</td>
                                         </tr>
+                                    </tbody>
+                                </table>
+                                <table>
+                                    <thead>
                                         <tr>
-                                            <th width="100%" align="left">Expected Delivery Time</th>
-                                            <th />
+                                            <th align="left">Expected Delivery Time</th>  
                                         </tr>
+                                    </thead>
+                                    <tbody>
                                         <tr>
-                                            <th width="100%" align="left" className={style.nobold}>
+                                            <th align="left" className={style.nobold}>
                                                 {this.props.convertToTime(this.props.order_expected_delivery_time)}</th>
-                                            <th />
                                         </tr>
                                     </tbody>
                                 </table>
@@ -128,13 +133,3 @@ export default class OrderDetailsDining extends React.Component {
     }
 }
 
-OrderDetailsDining.propTypes = {
-    order_comments: propTypes.string,
-    order_expected_delivery_time: propTypes.number,
-    order_items: propTypes.array,
-    order_name: propTypes.string,
-    order_id: propTypes.oneOfType([propTypes.string, propTypes.number]),
-    order_ordertime: propTypes.number,
-    order_room: propTypes.string,
-    convertToTime: propTypes.func
-}

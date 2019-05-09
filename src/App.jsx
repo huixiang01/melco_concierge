@@ -21,68 +21,82 @@ class App extends React.Component {
   constructor(p) {
     super(p);
     this.state = {
-      accordion: initialData,
+      orders: initialData,
       tab_index: 0,
       expected_delivery_start_time: startOfQuarter(new Date()),
       expected_delivery_end_time: endOfDay(new Date()),
       timestamp_start_time: startOfQuarter(new Date()),
       timestamp_end_time: endOfDay(new Date()),
-      column_data: Column_Data
+      column_data: Column_Data,
+      order_generated : 2
     };
     document.querySelectorAll('body')[0].style = 'background-color: rgb(244, 247, 250);'
   }
 
-  /*
+  
   componentDidMount() {
     setInterval(() => {
-      newUpdates = fetch('https://whatever.url')
-      this.setState({
-        ...this.state,
-        accordion : {
-          ...this.state.accordion,
-          orders : {
-            ...this.orders,
-            newUpdates
-          }
-        }
-      })
+      var api_update_orders = 'https://melco-service.azurewebsites.net/api/order?page=' + this.state.order_generated + '&pagesize=99999999999'
+      fetch(api_update_orders)
+      .then(response => response.json())
+      .then(data => {
+        var i;
+        for (i = 0; i < data.length; i++) { 
+          var generator, newOrderIds;
+          generator = this.state.order_generated + 1
+          newOrderIds = this.state.column_data.columns.column1.orderIds.push(generator)
+          data[i].timestamp = null
+          data[i].order_index = generator
+          this.state.orders.push(data[i])          
+          this.setState({
+            ...this.state,
+            column_data : {
+              ...this.state.column_data,
+              columns : {
+                ...this.state.column_data.columns,
+                column1 : {
+                  ...this.state.column_data.columns.column1,
+                  newOrderIds
+                }
+              }
+            },
+            order_generated : generator
+        })
+      }})
+      .catch(error => console.error(error))
+      //console.log(this.state)
     }, 5000)
   }
-  */
 
   handleFixedTabChange = (event, value) => {
     this.setState({ tab_index: value });
   };
 
-  deleteOrder = (orderid) => {
+  deleteOrder = (order_index) => {
 
-    if (this.state.accordion.orders[orderid].status === true) {
-      // delete this.state.accordion.orders[orderid]accordion.columns[""column-3""].orderIds
-      this.state.column_data.columns["column-3"].orderIds.splice(this.state.accordion.columns["column-3"].orderIds.indexOf(orderid), 1)
-      // this.state.accordion.orders.filter(order => order !== undefined)
+    if (this.state.orders[order_index -1].status === true) {
+      console.log(this.state.column_data.columns["column3"].orderIds.splice(this.state.column_data.columns["column3"].orderIds.indexOf(order_index), 1))
+      //this.state.column_data.columns["column3"].orderIds.splice(this.state.orders.columns["column3"].orderIds.indexOf(order_index) + 1, 1)
       this.setState({
         ...this.state
       })
     };
   }
 
-  handleStatus = orderid => () => {
+  handleStatus = order_index => () => {
 
     this.setState({
-      accordion: {
-        ...this.state.accordion,
-        orders: {
-          ...this.state.accordion.orders,
-          [orderid - 1]: {
-            ...this.state.accordion.orders[orderid - 1],
-            status: !this.state.accordion.orders[orderid - 1].status
+      orders: {
+        ...this.state.orders,
+        [order_index - 1]: {
+          ...this.state.orders[order_index - 1],
+          status: !this.state.orders[order_index - 1].status
           }
         }
       }
-    }
     );
 
-    setTimeout(this.deleteOrder, 600000, orderid - 1);
+    setTimeout(this.deleteOrder, 600000, order_index);
   }
 
   convertToTime = (input_time) => {
@@ -97,14 +111,14 @@ class App extends React.Component {
 
     this.setState({
       ...this.state,
-      expected_delivery_start_time: date
+      expected_delivery_start_time: Date.parse(date)
     })
   }
 
   handleEndDeliveryDateChange = (date) => {
     this.setState({
       ...this.state,
-      expected_delivery_end_time: date
+      expected_delivery_end_time: Date.parse(date)
     })
   }
 
@@ -112,7 +126,7 @@ class App extends React.Component {
 
     this.setState({
       ...this.state,
-      timestamp_start_time: date
+      timestamp_start_time: Date.parse(date)
     })
   }
 
@@ -120,11 +134,12 @@ class App extends React.Component {
 
     this.setState({
       ...this.state,
-      timestamp_end_time: date
+      timestamp_end_time: Date.parse(date)
     })
   }
 
   onDragEnd = result => {
+    
     const { destination, source, draggableId } = result
     if (!destination) {
       return
@@ -136,7 +151,7 @@ class App extends React.Component {
     ) {
       return
     }
-
+    
     const start = this.state.column_data.columns[source.droppableId]
     const finish = this.state.column_data.columns[destination.droppableId]
 
@@ -156,40 +171,40 @@ class App extends React.Component {
 
     // Moving from one list to another
     const startOrderIds = Array.from(start.orderIds)
-    const removedorder = startOrderIds[source.index]
-
-
-    startOrderIds.splice(source.index, 1)
-
+    
+    const removedorder = startOrderIds[source.index - 1]
+   
+    startOrderIds.splice(source.index -1, 1)
+    
     const newStart = {
       ...start,
       orderIds: startOrderIds
     }
 
     const finishOrderIds = Array.from(finish.orderIds)
+    
     finishOrderIds.push(draggableId - 1)
-
+    
     finishOrderIds.sort(function (a, b) { return a - b })
     const newFinish = {
       ...finish,
       orderIds: finishOrderIds
     }
+    
 
     var newtimestamp = new Date()
 
     const newState = {
       ...this.state,
-      accordion: {
-        ...this.state.accordion,
-        orders: {
-          ...this.state.accordion.orders,
-          [removedorder]: {
-            ...this.state.accordion.orders[removedorder],
-            timestamp: newtimestamp,
-            status: false
-          },
+      orders: {
+        ...this.state.orders,
+        [removedorder]: {
+          ...this.state.orders[removedorder],
+          timestamp: newtimestamp,
+          status: false
         },
       },
+      
       column_data: {
         ...this.state.column_data,
         columns: {
@@ -201,11 +216,10 @@ class App extends React.Component {
     }
 
     this.setState(newState)
-
   }
 
   render() {
-
+    console.log(this.state)
     return (
 
       <Grid>
@@ -295,10 +309,11 @@ class App extends React.Component {
             {this.state.column_data.columnOrder.map(columnId => {
               const column = this.state.column_data.columns[columnId]
               const orders = column.orderIds.map(
-                orderIds => this.state.accordion.orders[orderIds]
+                orderId => this.state.orders[orderId]
               )
+              
               return (
-                <Grid item xs={(column.id === "column-1") ? 6 : 3} key={column.id}>
+                <Grid item xs={(column.id === "column1") ? 6 : 3} key={column.id}>
                   <Column
                     column_id={column.id}
                     column_fields={column.fields}

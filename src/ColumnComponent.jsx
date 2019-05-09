@@ -1,5 +1,5 @@
 import React from 'react';
-import propTypes from 'prop-types';
+//import propTypes from 'prop-types';
 import Order from './orders';
 import { Droppable } from 'react-beautiful-dnd';
 import Card from '@material-ui/core/Card';
@@ -9,35 +9,38 @@ import CardContent from '@material-ui/core/CardContent';
 export default class ColumnComponent extends React.Component {
 
   handleOrder = () => {
-    return this.props.orders.filter(order => this.props.searchTab === order.type || this.props.searchTab === 0).filter(
-      order => order.expected_delivery_time >= this.props.expected_delivery_start_time && order.expected_delivery_time <= this.props.expected_delivery_end_time).filter(
+    
+    return (this.props.orders.filter(order => order && (this.props.searchTab === order.type || this.props.searchTab === 0)).filter(
+      order => Date.parse(new Date(order.deliveryDay)) >= this.props.expected_delivery_start_time && Date.parse(new Date(order.deliveryDay)) <= this.props.expected_delivery_end_time).filter(
         order => (order.timestamp >= this.props.timestamp_start_time && order.timestamp <= this.props.timestamp_end_time) || order.timestamp === null).map(
           (order, index) => {
+            
             return (
-              <Order
-                handleStatus={this.props.handleStatus}
-                key={order.orderid}
-                order_comments={order.comments}
-                order_expected_delivery_time={order.expected_delivery_time}
-                order_items={order.items}
-                order_name={order.name}
-                order_id={order.orderid}
-                order_ordertime={order.ordertime}
-                order_room={order.room}
-                order_status={order.status}
-                order_timestamp={order.timestamp}
-                order_type={order.type}
-                order={order}
-                index={index}
-                column_id={this.props.column_id}
-                convertToTime={this.props.convertToTime}
-              />
+            <Order
+              handleStatus={this.props.handleStatus}
+              key={order.id}
+              // order_comments={order.comments}
+              order_expected_delivery_time={new Date(order.deliveryDay).toUTCString()}
+              order_items={order.orderItems}
+              order_name={order.guestName}
+              order_id={order.id}
+              order_index={order.order_index}
+              order_room={order.roomNumber}
+              order_status={order.status}
+              order_timestamp={order.timestamp}
+              order_type={order.type}
+              index={index + 1}
+              column_id={this.props.column_id}
+              convertToTime={this.props.convertToTime}
+            />
             )
-          })
+          }
+        )
+    )
   }
 
   handleHeading = () => {
-    if (this.props.column_id === "column-1") {
+    if (this.props.column_id === "column1") {
       return (
         <table className={this.props.orders.length < 10 ? style.columntable_heading : style.columntable_heading1}>
           <thead>
@@ -64,7 +67,7 @@ export default class ColumnComponent extends React.Component {
           </thead>
         </table>
       )
-    } else if (this.props.column_id === "column-2") {
+    } else if (this.props.column_id === "column2") {
       return (
         <table className={this.props.orders.length < 10 ? style.columntable_heading : style.columntable_heading1}>
           <thead>
@@ -82,7 +85,7 @@ export default class ColumnComponent extends React.Component {
           </thead>
         </table>
       )
-    } else if (this.props.column_id === "column-3") {
+    } else if (this.props.column_id === "column3") {
       return (
         <table className={this.props.orders.length < 10 ? style.columntable_heading : style.columntable_heading1}>
           <thead>
@@ -97,8 +100,8 @@ export default class ColumnComponent extends React.Component {
                 <span className={style.padding_required}>Details</span>
               </th>
               <th width="25%" align="left" className={style.heading}>
-              <span className={style.padding_required}>Status</span>
-                  </th>
+                <span className={style.padding_required}>Status</span>
+              </th>
             </tr>
           </thead>
         </table>
@@ -133,16 +136,3 @@ export default class ColumnComponent extends React.Component {
   }
 }
 
-ColumnComponent.propTypes = {
-  orders : propTypes.array,
-  column_fields: propTypes.array,
-  column_title: propTypes.string,
-  column_id: propTypes.string,
-  searchTab: propTypes.number,
-  handleStatus: propTypes.func,
-  convertToTime: propTypes.func,
-  expected_delivery_start_time: propTypes.instanceOf(Date),
-  expected_delivery_end_time: propTypes.instanceOf(Date),
-  timestamp_start_time: propTypes.instanceOf(Date),
-  timestamp_end_time: propTypes.instanceOf(Date)
-}
