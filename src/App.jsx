@@ -67,12 +67,15 @@ class App extends React.Component {
         this.setState({
           ...this.state,
           orders : newOrders
-        })
+        })  
         
       }
       })
       .catch(error => {error = 500 ? console.log("") : console.error(error)}
       )
+      // post('https://melco-service.azurewebsites.net/api/order?page=1&pagesize=99999999999', {
+      
+//})
     }, 5000)
   }
 
@@ -161,8 +164,9 @@ class App extends React.Component {
     
     const start = this.state.column_data.columns[source.droppableId]
     const finish = this.state.column_data.columns[destination.droppableId] 
+    console.log(start.id, finish.id, 'id')
 
-    if (start.id >= finish.id) {
+    if ((start.id >= finish.id) || (start.id === 1 && finish.id === 3)) {
 
       const newState = {
         ...this.state.column_data,
