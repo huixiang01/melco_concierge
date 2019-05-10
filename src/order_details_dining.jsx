@@ -145,7 +145,7 @@ OrderDetailsDining.propTypes = {
     order_index: propTypes.number, 
     order_name: propTypes.string, 
     order_room: propTypes.string,
-    order_id: propTypes.number,
+    order_id: propTypes.number,  
     order_ordertime : propTypes.instanceOf(Date),
     order_items: propTypes.array,
     // order_comments : propTypes.string,

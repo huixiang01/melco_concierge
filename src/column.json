@@ -1,7 +1,7 @@
 {
   "columns": {
-    "column1": {
-      "id": "column1",
+    "1": {
+      "id": 1,
       "title": "Pending",
       "orderIds": [],
       "fields": [
@@ -13,8 +13,8 @@
         "Details"
       ]
     },
-    "column2": {
-      "id": "column2",
+    "2": {
+      "id": 2,
       "title": "Processing",
       "orderIds": [],
       "fields": [
@@ -23,8 +23,8 @@
         "Details"
       ]
     },
-    "column3": {
-      "id": "column3",
+    "3": {
+      "id": 3,
       "title": "Delivering",
       "orderIds": [],
       "fields": [
@@ -36,8 +36,8 @@
     }
   },
   "columnOrder": [
-    "column1",
-    "column2",
-    "column3"
+    "1",
+    "2",
+    "3"
   ]
 }

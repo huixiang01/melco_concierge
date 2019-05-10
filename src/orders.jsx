@@ -10,7 +10,7 @@ export default class Order extends React.Component {
 
   handleTableOrder = () => {
 
-    if (this.props.column_id === "column1") {
+    if (this.props.column_id === 1) {
       var Objectlength = Object.entries(this.props.order_items).length - 1
       return (
         <table width="100%" className={style.field}>
@@ -68,7 +68,7 @@ export default class Order extends React.Component {
           </tbody>
         </table>
       )
-    } else if (this.props.column_id === "column2") {
+    } else if (this.props.column_id === 2) {
       return (
         <table width="100%" className={style.field}>
           <tbody>
@@ -109,7 +109,7 @@ export default class Order extends React.Component {
           </tbody>
         </table>
       )
-    } else if (this.props.column_id === "column3") {
+    } else if (this.props.column_id === 3) {
       return (
         <table width="100%" className={style.field}>
           <tbody>
@@ -166,7 +166,7 @@ export default class Order extends React.Component {
 
 
   render() {
-  console.log(this.props.order_items)
+  
     return (
       <Draggable
         draggableId={this.props.order_index}
@@ -202,6 +202,6 @@ Order.propTypes = {
   order_timestamp: propTypes.instanceOf(Date),
   order_type: propTypes.number,
   index: propTypes.number,
-  column_id: propTypes.string,
+  column_id: propTypes.number,
   convertToTime: propTypes.func,
 }

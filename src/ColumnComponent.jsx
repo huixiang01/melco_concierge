@@ -40,7 +40,7 @@ export default class ColumnComponent extends React.Component {
   }
 
   handleHeading = () => {
-    if (this.props.column_id === "column1") {
+    if (this.props.column_id === 1) {
       return (
         <table className={this.props.orders.length < 10 ? style.columntable_heading : style.columntable_heading1}>
           <thead>
@@ -67,7 +67,7 @@ export default class ColumnComponent extends React.Component {
           </thead>
         </table>
       )
-    } else if (this.props.column_id === "column2") {
+    } else if (this.props.column_id === 2) {
       return (
         <table className={this.props.orders.length < 10 ? style.columntable_heading : style.columntable_heading1}>
           <thead>
@@ -85,7 +85,7 @@ export default class ColumnComponent extends React.Component {
           </thead>
         </table>
       )
-    } else if (this.props.column_id === "column3") {
+    } else if (this.props.column_id === 3) {
       return (
         <table className={this.props.orders.length < 10 ? style.columntable_heading : style.columntable_heading1}>
           <thead>
@@ -138,7 +138,7 @@ export default class ColumnComponent extends React.Component {
 
 
 ColumnComponent.propTypes = {
-  column_id: propTypes.string,
+  column_id: propTypes.number,
   column_fields: propTypes.array,
   column_title: propTypes.string,
   orders: propTypes.array,

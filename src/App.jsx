@@ -39,13 +39,12 @@ class App extends React.Component {
       fetch(api_update_orders)
       .then(response => response.json())
       .then(data => {
-        console.log(data)
         var i, newOrders;;
         for (i = 0; i < data.length; i++) { 
 
           var generator, newOrderIds;
           generator = this.state.order_generated + 1
-          newOrderIds = this.state.column_data.columns.column1.orderIds.push(generator - 2)
+          newOrderIds = this.state.column_data.columns["1"].orderIds.push(generator - 2)
           data[i].timestamp = null
           data[i].order_index = generator - 1
           newOrders = this.state.orders
@@ -56,19 +55,20 @@ class App extends React.Component {
               ...this.state.column_data,
               columns : {
                 ...this.state.column_data.columns,
-                column1 : {
-                  ...this.state.column_data.columns.column1,
+                "1" : {
+                  ...this.state.column_data.columns["1"],
                   newOrderIds
                 }
               }
             },
             order_generated : generator
         }) 
+        
         this.setState({
           ...this.state,
           orders : newOrders
         })
-        // console.log(this.state)
+        
       }
       })
       .catch(error => {error = 500 ? console.log("") : console.error(error)}
@@ -83,7 +83,7 @@ class App extends React.Component {
   deleteOrder = (order_index) => {
 
     if (this.state.orders[order_index -1].status === true) {
-      this.state.column_data.columns["column3"].orderIds.splice(this.state.column_data.columns["column3"].orderIds.indexOf(order_index), 1)
+      this.state.column_data.columns["3"].orderIds.splice(this.state.column_data.columns["3"].orderIds.indexOf(order_index), 1)
       this.setState({
         ...this.state
       })
@@ -160,9 +160,9 @@ class App extends React.Component {
     }
     
     const start = this.state.column_data.columns[source.droppableId]
-    const finish = this.state.column_data.columns[destination.droppableId]
+    const finish = this.state.column_data.columns[destination.droppableId] 
 
-    if (start === finish) {
+    if (start.id >= finish.id) {
 
       const newState = {
         ...this.state.column_data,
@@ -226,6 +226,7 @@ class App extends React.Component {
   }
 
   render() {
+    console.log(this.state)
     return (
 
       <Grid>
@@ -319,7 +320,7 @@ class App extends React.Component {
               )
               
               return (
-                <Grid item xs={(column.id === "column1") ? 6 : 3} key={column.id}>
+                <Grid item xs={(column.id === 1) ? 6 : 3} key={column.id}>
                   <Column
                     column_id={column.id}
                     column_fields={column.fields}
