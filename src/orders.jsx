@@ -46,7 +46,7 @@ export default class Order extends React.Component {
                     order_name={this.props.order_name}
                     order_room={this.props.order_room}
                     order_id={this.props.order_id}
-                    order_ordertime={new Date(this.props.order_items[0].createdDate)}
+                    order_ordertime={this.props.order_items[0] !== undefined ? new Date(this.props.order_items[0].createdDate) : null}
                     order_items={this.props.order_items}
                     order_comments={this.props.order_comments}
                     order_expected_delivery_time={this.props.order_expected_delivery_time}
@@ -57,7 +57,7 @@ export default class Order extends React.Component {
                     order_name={this.props.order_name}
                     order_room={this.props.order_room}
                     order_id={this.props.order_id}
-                    order_ordertime={new Date(this.props.order_items[0].createdDate)}
+                    order_ordertime={this.props.order_items[0] !== undefined ? new Date(this.props.order_items[0].createdDate) : null}
                     order_items={this.props.order_items}
                     order_comments={this.props.order_comments}
                     order_expected_delivery_time={this.props.order_expected_delivery_time}
@@ -80,13 +80,14 @@ export default class Order extends React.Component {
                 {this.props.convertToTime(this.props.order_timestamp)}
               </td>
               <td width="33.3%" align="left">
+              
                 {this.props.order_type === 1 ?
                   <OrderDetailsDining
                     order_index={this.props.order_index}
                     order_name={this.props.order_name}
                     order_room={this.props.order_room}
                     order_id={this.props.order_id}
-                    order_ordertime={new Date(this.props.order_items[0].createdDate)}
+                    order_ordertime={this.props.order_items[0] !== undefined ? new Date(this.props.order_items[0].createdDate) : null}
                     order_items={this.props.order_items}
                     order_comments={this.props.order_comments}
                     order_expected_delivery_time={this.props.order_expected_delivery_time}
@@ -97,7 +98,7 @@ export default class Order extends React.Component {
                     order_name={this.props.order_name}
                     order_room={this.props.order_room}
                     order_id={this.props.order_id}
-                    order_ordertime={new Date(this.props.order_items[0].createdDate)}
+                    order_ordertime={this.props.order_items[0] !== undefined ? new Date(this.props.order_items[0].createdDate) : null}
                     order_items={this.props.order_items}
                     order_comments={this.props.order_comments}
                     order_expected_delivery_time={this.props.order_expected_delivery_time}
@@ -120,13 +121,14 @@ export default class Order extends React.Component {
                 {this.props.convertToTime(this.props.order_timestamp)}
               </td>
               <td width="20%" align="left">
-                {this.props.order_type === 1 ?
+                {this.props.order_type === 1?
                   <OrderDetailsDining
                     order_index={this.props.order_index}
                     order_name={this.props.order_name}
                     order_room={this.props.order_room}
                     order_id={this.props.order_id}
-                    order_ordertime={new Date(this.props.order_items[0].createdDate)}
+                    order_ordertime={this.props.order_items[0] !== undefined ? new Date(this.props.order_items[0].createdDate) : null}
+                    // this.props.order_items[0] !== undefined ? 
                     order_items={this.props.order_items}
                     order_comments={this.props.order_comments}
                     order_expected_delivery_time={this.props.order_expected_delivery_time}
@@ -137,7 +139,7 @@ export default class Order extends React.Component {
                     order_name={this.props.order_name}
                     order_room={this.props.order_room}
                     order_id={this.props.order_id}
-                    order_ordertime={new Date(this.props.order_items[0].createdDate)}
+                    order_ordertime={this.props.order_items[0] !== undefined ? new Date(this.props.order_items[0].createdDate) : null}
                     order_items={this.props.order_items}
                     order_comments={this.props.order_comments}
                     order_expected_delivery_time={this.props.order_expected_delivery_time}
@@ -164,7 +166,7 @@ export default class Order extends React.Component {
 
 
   render() {
-
+  console.log(this.props.order_items)
     return (
       <Draggable
         draggableId={this.props.order_index}

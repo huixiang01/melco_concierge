@@ -14,7 +14,12 @@ export default class OrderDetailsDining extends React.Component {
 
     totalPrice = () => {
         return (Object.values(this.props.order_items).reduce(function (currentTotal, item) {
-            return currentTotal + item.item.price
+            
+            if (item.item === undefined) {
+                return currentTotal
+            } else {
+                return currentTotal + item.item.price
+            }
         }, 0))
     }
 

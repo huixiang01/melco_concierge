@@ -39,6 +39,7 @@ class App extends React.Component {
       fetch(api_update_orders)
       .then(response => response.json())
       .then(data => {
+        console.log(data)
         var i, newOrders;;
         for (i = 0; i < data.length; i++) { 
 
