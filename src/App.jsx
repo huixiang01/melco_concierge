@@ -1,7 +1,6 @@
 import React from 'react';
 import { DragDropContext } from 'react-beautiful-dnd';
-// import propTypes from 'prop-types';
-import initialData from './initialdata.json';
+// import initialData from './initialdata.json';
 import Column from './ColumnComponent';
 import style from './index.module.scss';
 import { startOfQuarter, endOfDay } from 'date-fns'
@@ -21,14 +20,14 @@ class App extends React.Component {
   constructor(p) {
     super(p);
     this.state = {
-      orders: initialData,
+      orders: [],
       tab_index: 0,
       expected_delivery_start_time: startOfQuarter(new Date()),
       expected_delivery_end_time: endOfDay(new Date()),
       timestamp_start_time: startOfQuarter(new Date()),
       timestamp_end_time: endOfDay(new Date()),
       column_data: Column_Data,
-      order_generated : 2
+      order_generated : 1
     };
     document.querySelectorAll('body')[0].style = 'background-color: rgb(244, 247, 250);'
   }
@@ -40,14 +39,16 @@ class App extends React.Component {
       fetch(api_update_orders)
       .then(response => response.json())
       .then(data => {
-        var i;
+        var i, newOrders;;
         for (i = 0; i < data.length; i++) { 
+
           var generator, newOrderIds;
           generator = this.state.order_generated + 1
-          newOrderIds = this.state.column_data.columns.column1.orderIds.push(generator)
+          newOrderIds = this.state.column_data.columns.column1.orderIds.push(generator - 2)
           data[i].timestamp = null
-          data[i].order_index = generator
-          this.state.orders.push(data[i])          
+          data[i].order_index = generator - 1
+          newOrders = this.state.orders
+          newOrders.push(data[i])       
           this.setState({
             ...this.state,
             column_data : {
@@ -61,10 +62,16 @@ class App extends React.Component {
               }
             },
             order_generated : generator
+        }) 
+        this.setState({
+          ...this.state,
+          orders : newOrders
         })
-      }})
-      .catch(error => console.error(error))
-      //console.log(this.state)
+        // console.log(this.state)
+      }
+      })
+      .catch(error => {error = 500 ? console.log("") : console.error(error)}
+      )
     }, 5000)
   }
 
@@ -75,8 +82,7 @@ class App extends React.Component {
   deleteOrder = (order_index) => {
 
     if (this.state.orders[order_index -1].status === true) {
-      console.log(this.state.column_data.columns["column3"].orderIds.splice(this.state.column_data.columns["column3"].orderIds.indexOf(order_index), 1))
-      //this.state.column_data.columns["column3"].orderIds.splice(this.state.orders.columns["column3"].orderIds.indexOf(order_index) + 1, 1)
+      this.state.column_data.columns["column3"].orderIds.splice(this.state.column_data.columns["column3"].orderIds.indexOf(order_index), 1)
       this.setState({
         ...this.state
       })
@@ -219,7 +225,6 @@ class App extends React.Component {
   }
 
   render() {
-    console.log(this.state)
     return (
 
       <Grid>

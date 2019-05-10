@@ -3,7 +3,7 @@
     "column1": {
       "id": "column1",
       "title": "Pending",
-      "orderIds": [0, 1],
+      "orderIds": [],
       "fields": [
         "Items",
         "OrderID",

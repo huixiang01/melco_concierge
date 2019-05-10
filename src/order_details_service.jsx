@@ -1,6 +1,6 @@
 import React from 'react'
 import style from './index.module.scss'
-//import propTypes from 'prop-types';
+import propTypes from 'prop-types';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
@@ -85,6 +85,9 @@ export default class OrderDetailsService extends React.Component {
                                     <tbody>
 
                                         {Object.entries(this.props.order_items).map(([item, itemdetails]) => {
+                                            if (itemdetails.item === undefined) {
+                                                return (<tr key={this.props.order_index}/>)
+                                            }
                                             return (
                                                 <tr key={this.props.order_id + item} >
                                                     <th width="70%" align="left" className={style.orderitems}>{itemdetails.item.name}</th>
@@ -119,4 +122,16 @@ export default class OrderDetailsService extends React.Component {
             </div>
         );
     }
+}
+
+OrderDetailsService.propTypes = {
+    order_index: propTypes.number, 
+    order_name: propTypes.string, 
+    order_room: propTypes.string,
+    order_id: propTypes.number,
+    order_ordertime : propTypes.instanceOf(Date),
+    order_items: propTypes.array,
+    // order_comments : propTypes.string,
+    order_expected_delivery_time: propTypes.instanceOf(Date),
+    convertToTime: propTypes.func,
 }
