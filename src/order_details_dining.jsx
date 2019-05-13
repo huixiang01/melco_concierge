@@ -92,7 +92,7 @@ export default class OrderDetailsDining extends React.Component {
                                                 <tr key={this.props.order_orderid + item}>
                                                     <th width="70%" align="left" className={style.orderitems}>{itemdetails.item.name}</th>
                                                     <th width="15%" align="right" className={style.orderitems}>{itemdetails.qty}</th>
-                                                    <th width="15%" align="right" className={style.orderitems}>{itemdetails.item.price}</th>
+                                                    <th width="15%" align="right" className={style.orderitems}>MOP {itemdetails.item.price}</th>
                                                 </tr>
                                             )
                                         })}

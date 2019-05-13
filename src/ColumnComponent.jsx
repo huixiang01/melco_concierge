@@ -111,6 +111,7 @@ export default class ColumnComponent extends React.Component {
 
   render() {
 
+
      return (
       <Card className={style.carddroppable}>
         <CardContent className={this.props.column_title === "Pending" ? style.cardtitle1 :

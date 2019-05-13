@@ -166,10 +166,10 @@ export default class Order extends React.Component {
 
 
   render() {
-  
+    
     return (
       <Draggable
-        draggableId={this.props.order_index}
+        draggableId={this.props.order_id}
         index={this.props.index}
         key={this.props.index}
 

@@ -39,35 +39,33 @@ class App extends React.Component {
       fetch(api_update_orders)
       .then(response => response.json())
       .then(data => {
-        var i, newOrders;;
+        
+        var i, newOrders, newOrderIds;
+        newOrderIds = this.state.column_data.columns["1"].orderIds
+        newOrders = this.state.orders
         for (i = 0; i < data.length; i++) { 
 
-          var generator, newOrderIds;
+          var generator;
           generator = this.state.order_generated + 1
-          newOrderIds = this.state.column_data.columns["1"].orderIds.push(generator - 2)
+          newOrderIds.unshift(data[i].id)
           data[i].timestamp = null
           data[i].order_index = generator - 1
-          newOrders = this.state.orders
-          newOrders.push(data[i])       
+          newOrders.unshift(data[i])       
           this.setState({
             ...this.state,
+            orders : newOrders,
             column_data : {
               ...this.state.column_data,
               columns : {
                 ...this.state.column_data.columns,
                 "1" : {
                   ...this.state.column_data.columns["1"],
-                  newOrderIds
+                  orderIds : newOrderIds
                 }
               }
             },
             order_generated : generator
         }) 
-        
-        this.setState({
-          ...this.state,
-          orders : newOrders
-        })  
         
       }
       })
@@ -87,6 +85,7 @@ class App extends React.Component {
 
     if (this.state.orders[order_index -1].status === true) {
       this.state.column_data.columns["3"].orderIds.splice(this.state.column_data.columns["3"].orderIds.indexOf(order_index), 1)
+
       this.setState({
         ...this.state
       })
@@ -106,7 +105,7 @@ class App extends React.Component {
       }
     );
 
-    setTimeout(this.deleteOrder, 600000, order_index);
+    setTimeout(this.deleteOrder, 1000, order_index);
   }
 
   convertToTime = (input_time) => {
@@ -154,24 +153,24 @@ class App extends React.Component {
     if (!destination) {
       return
     }
-
+    
     if (
       destination.droppableId === source.droppableId &&
       destination.index === source.index
     ) {
       return
     }
-    
+
     const start = this.state.column_data.columns[source.droppableId]
     const finish = this.state.column_data.columns[destination.droppableId] 
-    console.log(start.id, finish.id, 'id')
-
+   
+    
     if ((start.id >= finish.id) || (start.id === 1 && finish.id === 3)) {
 
       const newState = {
         ...this.state.column_data,
         columns: {
-          ...this.state.column_data.columns,
+          ...this.state.column_data.columns
 
         }
       }
@@ -179,29 +178,31 @@ class App extends React.Component {
       this.setState(newState)
       return
     }
+    
 
     // Moving from one list to another
     const startOrderIds = Array.from(start.orderIds)
     
-    const removedorder = startOrderIds[source.index - 1]
-   
-    startOrderIds.splice(source.index -1, 1)
+    const removedorder = Object.values(this.state.orders).findIndex(order => order.id === draggableId)
+    startOrderIds.splice(startOrderIds.indexOf(draggableId), 1)
+    
     
     const newStart = {
       ...start,
       orderIds: startOrderIds
     }
-
+  
     const finishOrderIds = Array.from(finish.orderIds)
     
-    finishOrderIds.push(draggableId - 1)
+    finishOrderIds.push(draggableId)
+  
     
     finishOrderIds.sort(function (a, b) { return a - b })
     const newFinish = {
       ...finish,
       orderIds: finishOrderIds
     }
-    
+   
 
     var newtimestamp = new Date()
 
@@ -230,7 +231,7 @@ class App extends React.Component {
   }
 
   render() {
-    console.log(this.state)
+    
     return (
 
       <Grid>
@@ -318,27 +319,24 @@ class App extends React.Component {
         <Grid container spacing={24} className={style.grid}>
           <DragDropContext onDragEnd={this.onDragEnd} className={style.mainaccordiontable} >
             {this.state.column_data.columnOrder.map(columnId => {
-              const column = this.state.column_data.columns[columnId]
-              const orders = column.orderIds.map(
-                orderId => this.state.orders[orderId]
-              )
-              
-              return (
-                <Grid item xs={(column.id === 1) ? 6 : 3} key={column.id}>
-                  <Column
-                    column_id={column.id}
-                    column_fields={column.fields}
-                    column_title={column.title}
-                    orders={orders}
-                    searchTab={this.state.tab_index}
-                    handleStatus={this.handleStatus}
-                    convertToTime={this.convertToTime}
-                    expected_delivery_start_time={this.state.expected_delivery_start_time}
-                    expected_delivery_end_time={this.state.expected_delivery_end_time}
-                    timestamp_start_time={this.state.timestamp_start_time}
-                    timestamp_end_time={this.state.timestamp_end_time}
-                  />
-                </Grid>)
+                const column = this.state.column_data.columns[columnId]
+                var orders = Object.values(this.state.orders).filter(order => column.orderIds.includes(order.id))
+                return (
+                  <Grid item xs={(column.id === 1) ? 6 : 3} key={column.id}>
+                    <Column
+                      column_id={column.id}
+                      column_fields={column.fields}
+                      column_title={column.title}
+                      orders={orders}
+                      searchTab={this.state.tab_index}
+                      handleStatus={this.handleStatus}
+                      convertToTime={this.convertToTime}
+                      expected_delivery_start_time={this.state.expected_delivery_start_time}
+                      expected_delivery_end_time={this.state.expected_delivery_end_time}
+                      timestamp_start_time={this.state.timestamp_start_time}
+                      timestamp_end_time={this.state.timestamp_end_time}
+                    />
+                  </Grid>)
             })
             }
           </DragDropContext>
