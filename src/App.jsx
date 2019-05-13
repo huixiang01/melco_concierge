@@ -83,7 +83,7 @@ class App extends React.Component {
 
   deleteOrder = (order_index) => {
 
-    if (this.state.orders[order_index -1].status === true) {
+    if (this.state.orders[order_index].status === true) {
       this.state.column_data.columns["3"].orderIds.splice(this.state.column_data.columns["3"].orderIds.indexOf(order_index), 1)
 
       this.setState({
@@ -92,14 +92,16 @@ class App extends React.Component {
     };
   }
 
-  handleStatus = order_index => () => {
+  handleStatus = order_id => () => {
+    const order_index = Object.values(this.state.orders).findIndex(order => order.id === order_id)
+   
 
     this.setState({
       orders: {
         ...this.state.orders,
-        [order_index - 1]: {
-          ...this.state.orders[order_index - 1],
-          status: !this.state.orders[order_index - 1].status
+        [order_index]: {
+          ...this.state.orders[order_index],
+          status: !this.state.orders[order_index].status
           }
         }
       }

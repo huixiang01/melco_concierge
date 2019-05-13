@@ -86,7 +86,7 @@ export default class OrderDetailsDining extends React.Component {
                                     <tbody>
                                         {Object.entries(this.props.order_items).map(([item, itemdetails]) => {
                                             if (itemdetails.item === undefined) {
-                                                return (<tr key={this.props.order_index} />)
+                                                return (<tr key={this.props.order_id} />)
                                             }
                                             return (
                                                 <tr key={this.props.order_orderid + item}>
@@ -142,7 +142,6 @@ export default class OrderDetailsDining extends React.Component {
 }
 
 OrderDetailsDining.propTypes = {
-    order_index: propTypes.number, 
     order_name: propTypes.string, 
     order_room: propTypes.string,
     order_id: propTypes.number,  

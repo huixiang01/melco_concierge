@@ -42,7 +42,7 @@ export default class Order extends React.Component {
               <td width="10%" align="left">
                 {this.props.order_type === 1 ?
                   <OrderDetailsDining
-                    order_index={this.props.order_index}
+             
                     order_name={this.props.order_name}
                     order_room={this.props.order_room}
                     order_id={this.props.order_id}
@@ -53,7 +53,7 @@ export default class Order extends React.Component {
                     convertToTime={this.props.convertToTime} />
                   :
                   <OrderDetailsService
-                    order_index={this.props.order_index}
+                 
                     order_name={this.props.order_name}
                     order_room={this.props.order_room}
                     order_id={this.props.order_id}
@@ -83,7 +83,7 @@ export default class Order extends React.Component {
               
                 {this.props.order_type === 1 ?
                   <OrderDetailsDining
-                    order_index={this.props.order_index}
+                
                     order_name={this.props.order_name}
                     order_room={this.props.order_room}
                     order_id={this.props.order_id}
@@ -94,7 +94,7 @@ export default class Order extends React.Component {
                     convertToTime={this.props.convertToTime} />
                   :
                   <OrderDetailsService
-                    order_index={this.props.order_index}
+                   
                     order_name={this.props.order_name}
                     order_room={this.props.order_room}
                     order_id={this.props.order_id}
@@ -123,7 +123,7 @@ export default class Order extends React.Component {
               <td width="20%" align="left">
                 {this.props.order_type === 1?
                   <OrderDetailsDining
-                    order_index={this.props.order_index}
+                    
                     order_name={this.props.order_name}
                     order_room={this.props.order_room}
                     order_id={this.props.order_id}
@@ -135,7 +135,7 @@ export default class Order extends React.Component {
                     convertToTime={this.props.convertToTime} />
                   :
                   <OrderDetailsService
-                    order_index={this.props.order_index}
+                    
                     order_name={this.props.order_name}
                     order_room={this.props.order_room}
                     order_id={this.props.order_id}
@@ -150,7 +150,7 @@ export default class Order extends React.Component {
                 <Switch
                   className={style.padding_required}
                   checked={Boolean(this.props.order_status)}
-                  onChange={this.props.handleStatus(this.props.order_index)}
+                  onChange={this.props.handleStatus(this.props.order_id)}
                   value={this.props.order_status}
                   color="primary">
                 </Switch>
