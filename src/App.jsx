@@ -93,19 +93,19 @@ class App extends React.Component {
   }
 
   handleStatus = order_id => () => {
-    const order_index = Object.values(this.state.orders).findIndex(order => order.id === order_id)
-   
+    const order_index = this.state.orders.findIndex(order => order.id === order_id)
+    const orders = this.state.orders
+
+    const replaced_order = {
+      ...this.state.orders[order_index],
+      status: !this.state.orders[order_index].status
+      }
+      orders.splice(order_index, 1, replaced_order)
 
     this.setState({
-      orders: {
-        ...this.state.orders,
-        [order_index]: {
-          ...this.state.orders[order_index],
-          status: !this.state.orders[order_index].status
-          }
-        }
-      }
-    );
+      ...this.state,
+      orders
+      });
 
     setTimeout(this.deleteOrder, 600000, order_index);
   }
@@ -173,7 +173,6 @@ class App extends React.Component {
         ...this.state.column_data,
         columns: {
           ...this.state.column_data.columns
-
         }
       }
 
@@ -181,11 +180,10 @@ class App extends React.Component {
       return
     }
     
-
     // Moving from one list to another
     const startOrderIds = Array.from(start.orderIds)
     
-    const removedorder = Object.values(this.state.orders).findIndex(order => order.id === draggableId)
+    const removedorder = this.state.orders.findIndex(order => order.id === draggableId)
     startOrderIds.splice(startOrderIds.indexOf(draggableId), 1)
     
     
@@ -204,21 +202,19 @@ class App extends React.Component {
       ...finish,
       orderIds: finishOrderIds
     }
-   
 
     var newtimestamp = new Date()
+    const orders = this.state.orders
+    const replaced_order = {
+      ...this.state.orders[removedorder],
+      timestamp: newtimestamp,
+      status: false
+    }
 
+    orders.splice(removedorder, 1, replaced_order)
     const newState = {
       ...this.state,
-      orders: {
-        ...this.state.orders,
-        [removedorder]: {
-          ...this.state.orders[removedorder],
-          timestamp: newtimestamp,
-          status: false
-        },
-      },
-      
+      orders,
       column_data: {
         ...this.state.column_data,
         columns: {
@@ -228,12 +224,12 @@ class App extends React.Component {
         }
       }
     }
-
+    console.log(newState)
     this.setState(newState)
   }
 
   render() {
-    
+    console.log(this.state.orders)
     return (
 
       <Grid>
@@ -322,7 +318,7 @@ class App extends React.Component {
           <DragDropContext onDragEnd={this.onDragEnd} className={style.mainaccordiontable} >
             {this.state.column_data.columnOrder.map(columnId => {
                 const column = this.state.column_data.columns[columnId]
-                var orders = Object.values(this.state.orders).filter(order => column.orderIds.includes(order.id))
+                var orders = this.state.orders.filter(order => column.orderIds.includes(order.id))
                 return (
                   <Grid item xs={(column.id === 1) ? 6 : 3} key={column.id}>
                     <Column
