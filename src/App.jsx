@@ -105,7 +105,7 @@ class App extends React.Component {
       }
     );
 
-    setTimeout(this.deleteOrder, 1000, order_index);
+    setTimeout(this.deleteOrder, 600000, order_index);
   }
 
   convertToTime = (input_time) => {
